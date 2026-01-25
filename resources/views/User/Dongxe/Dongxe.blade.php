@@ -35,13 +35,25 @@
 
                 <div class="car-dx-text-seach-left">
                     <ul>
-                        <li>Dòng xe</li>
-                        <li><button></button>718</li>
-                        <li><button></button>911</li>
-                        <li><button></button>Taycan</li>
-                        <li><button></button>Panamera</li>
-                        <li><button></button>Macan</li>
-                        <li><button></button>Cayenne</li>
+                    <li>
+    <button class="filter-btn" data-filter="718"></button>718
+</li>
+<li>
+    <button class="filter-btn" data-filter="911"></button>911
+</li>
+<li>
+    <button class="filter-btn" data-filter="taycan"></button>Taycan
+</li>
+<li>
+    <button class="filter-btn" data-filter="panamera"></button>Panamera
+</li>
+<li>
+    <button class="filter-btn" data-filter="macan"></button>Macan
+</li>
+<li>
+    <button class="filter-btn" data-filter="cayenne"></button>Cayenne
+</li>
+
                     </ul>
                 </div>
                 <div class="car-dx-text-seach-left">
@@ -80,18 +92,30 @@
                         <li><button></button>2 + 2</li>
                     </ul>
                 </div>
-                <div class="car-dx-text-seach-right">
-                    <p>Mức giá tiêu chuẩn (VNĐ)</p>
-                    <div class="car-dx-text-seach-right-item">
-                        <p>Giá VNĐ </p>
-                        <i class="ri-arrow-down-wide-line"></i>
-                    </div>
-                    <p style="margin-top: 20px;">Công suất</p>
-                    <div class="car-dx-text-seach-right-item">
-                        <p>Hiện tất cả(hp)</p>
-                        <i class="ri-arrow-down-wide-line"></i>
-                    </div>
-                </div>
+             <div class="car-dx-text-seach-right">
+
+    <p>Mức giá tiêu chuẩn (VNĐ)</p>
+
+    <div class="price-range-box">
+        <div class="price-range-text">
+            <span id="price-min-text">0 vnđ</span>
+            <span id="price-max-text">30.000.000.000 vnđ</span>
+        </div>
+
+        <div class="price-range-slider">
+            <input type="range" id="priceMin" min="0" max="30000000000" step="100000000" value="0">
+            <input type="range" id="priceMax" min="0" max="30000000000" step="100000000" value="30000000000">
+        </div>
+    </div>
+
+    <p style="margin-top: 20px;">Công suất</p>
+    <div class="car-dx-text-seach-right-item">
+        <p>Hiện tất cả(hp)</p>
+        <i class="ri-arrow-down-wide-line"></i>
+    </div>
+
+</div>
+
 
             </div>
         </section>
@@ -107,7 +131,7 @@
             </div>
             <div class="car-dx-content-items">
                 @foreach($products->slice(2, 2) as $product)
-                <div class="car-dx-content-item">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} ">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -127,7 +151,7 @@
             </div>
             <div class="car-dx-content-items">
                 @foreach($products->slice(0, 2) as $product)
-                <div class="car-dx-content-item">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -141,13 +165,33 @@
 
             </div>
     </section>  
+         <section class="car-dx-content">
+            <div class="car-dx-content-text">
+                <p><i class="ri-arrow-right-wide-line"></i>Phiên bản 718 Style Edition</p>
+            </div>
+            <div class="car-dx-content-items">
+                @foreach($products->slice(4, 2) as $product)
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}}" data-price="{{ $product->price }}">
+                    <img src="{{asset($product->main_image )}}" alt="">
+                    <Li>{{ $product->name }}</Li>
+                    <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
+                    <li style="margin-top: 20px;"><button><i class="ri-arrow-right-wide-line"></i><a
+                                href="{{ url( $product->slug) }}">Khám phá</a></button></li>
+                    <li><button style="margin-top: 3px;"><i class="ri-shopping-cart-line"></i>Thêm giỏ hàng</button>
+                    </li>
+
+                </div>
+                @endforeach
+
+            </div>
+    </section>   
     <section class="car-dx-content">
             <div class="car-dx-content-text">
                 <p><i class="ri-arrow-right-wide-line"></i>Phiên bản 911 Carrera Coupé</p>
             </div>
             <div class="car-dx-content-items">
                  @foreach($products->slice(6, 4) as $product)
-                <div class="car-dx-content-item">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -162,7 +206,41 @@
             <section class="car-dx-content">
                 <div class="car-dx-content-items">
                        @foreach($products->slice(10, 1) as $product)
-                <div class="car-dx-content-item">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                    <img src="{{asset($product->main_image )}}" alt="">
+                    <Li>{{ $product->name }}</Li>
+                    <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
+                    <li style="margin-top: 20px;"><button><i class="ri-arrow-right-wide-line"></i><a
+                                href="{{ url( $product->slug) }}">Khám phá</a></button></li>
+                    <li><button style="margin-top: 3px;"><i class="ri-shopping-cart-line"></i>Thêm giỏ hàng</button>
+                    </li>
+
+                </div>
+                  @endforeach
+                </div>
+    </section>
+      <section class="car-dx-content">
+            <div class="car-dx-content-text">
+                <p><i class="ri-arrow-right-wide-line"></i>Phiên bản 911 Carrera Cabriolet</p>
+            </div>
+            <div class="car-dx-content-items">
+                 @foreach($products->slice(11, 4) as $product)
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                    <img src="{{asset($product->main_image )}}" alt="">
+                    <Li>{{ $product->name }}</Li>
+                    <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
+                    <li style="margin-top: 20px;"><button><i class="ri-arrow-right-wide-line"></i><a
+                                href="{{ url( $product->slug) }}">Khám phá</a></button></li>
+                    <li><button style="margin-top: 3px;"><i class="ri-shopping-cart-line"></i>Thêm giỏ hàng</button>
+                    </li>
+
+                </div>
+                  @endforeach
+            </div>
+            <section class="car-dx-content">
+                <div class="car-dx-content-items">
+                       @foreach($products->slice(15, 1) as $product)
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -177,11 +255,11 @@
     </section>
      <section class="car-dx-content">
             <div class="car-dx-content-text">
-                <p><i class="ri-arrow-right-wide-line"></i>Phiên bản 911 Carrera Coupé</p>
+                <p><i class="ri-arrow-right-wide-line"></i>Phiên bản Taycan</p>
             </div>
             <div class="car-dx-content-items">
                  @foreach($products->slice(16, 4) as $product)
-                <div class="car-dx-content-item">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -196,7 +274,7 @@
             <section class="car-dx-content">
                 <div class="car-dx-content-items">
                        @foreach($products->slice(20, 3) as $product)
-                <div class="car-dx-content-item">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -209,6 +287,120 @@
                   @endforeach
                 </div>
         </section>
+         <section class="car-dx-content">
+            <div class="car-dx-content-text">
+                <p><i class="ri-arrow-right-wide-line"></i>Phiên bản Cross Turismo</p>
+            </div>
+            <div class="car-dx-content-items">
+                @foreach($products->slice(23, 3) as $product)
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} " data-price="{{ $product->price }}">
+                    <img src="{{asset($product->main_image )}}" alt="">
+                    <Li>{{ $product->name }}</Li>
+                    <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
+                    <li style="margin-top: 20px;"><button><i class="ri-arrow-right-wide-line"></i><a
+                                href="{{ url( $product->slug) }}">Khám phá</a></button></li>
+                    <li><button style="margin-top: 3px;"><i class="ri-shopping-cart-line"></i>Thêm giỏ hàng</button>
+                    </li>
+
+                </div>
+                @endforeach
+
+            </div>
+    </section>        
+     <section class="car-dx-content">
+            <div class="car-dx-content-text">
+                <p><i class="ri-arrow-right-wide-line"></i>Phiên bản Panamera</p>
+            </div>
+            <div class="car-dx-content-items">
+                @foreach($products->slice(26, 2) as $product)
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} " data-price="{{ $product->price }}">
+                    <img src="{{asset($product->main_image )}}" alt="">
+                    <Li>{{ $product->name }}</Li>
+                    <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
+                    <li style="margin-top: 20px;"><button><i class="ri-arrow-right-wide-line"></i><a
+                                href="{{ url( $product->slug) }}">Khám phá</a></button></li>
+                    <li><button style="margin-top: 3px;"><i class="ri-shopping-cart-line"></i>Thêm giỏ hàng</button>
+                    </li>
+
+                </div>
+                @endforeach
+
+            </div>
+    </section>        
+     <section class="car-dx-content">
+            <div class="car-dx-content-text">
+                <p><i class="ri-arrow-right-wide-line"></i>Phiên bản Macan</p>
+            </div>
+            <div class="car-dx-content-items">
+                @foreach($products->slice(28, 4) as $product)
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} " data-price="{{ $product->price }}">
+                    <img src="{{asset($product->main_image )}}" alt="">
+                    <Li>{{ $product->name }}</Li>
+                    <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
+                    <li style="margin-top: 20px;"><button><i class="ri-arrow-right-wide-line"></i><a
+                                href="{{ url( $product->slug) }}">Khám phá</a></button></li>
+                    <li><button style="margin-top: 3px;"><i class="ri-shopping-cart-line"></i>Thêm giỏ hàng</button>
+                    </li>
+
+                </div>
+                @endforeach
+
+            </div>
+    </section>        
+    <section class="car-dx-content">
+            <div class="car-dx-content-text">
+                <p><i class="ri-arrow-right-wide-line"></i>Phiên bản Macan điện</p>
+            </div>
+            <div class="car-dx-content-items">
+                @foreach($products->slice(32, 4) as $product)
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} " data-price="{{ $product->price }}">
+                    <img src="{{asset($product->main_image )}}" alt="">
+                    <Li>{{ $product->name }}</Li>
+                    <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
+                    <li style="margin-top: 20px;"><button><i class="ri-arrow-right-wide-line"></i><a
+                                href="{{ url( $product->slug) }}">Khám phá</a></button></li>
+                    <li><button style="margin-top: 3px;"><i class="ri-shopping-cart-line"></i>Thêm giỏ hàng</button>
+                    </li>
+
+                </div>
+                @endforeach
+
+            </div>
+    </section>        
+      <section class="car-dx-content">
+            <div class="car-dx-content-text">
+                <p><i class="ri-arrow-right-wide-line"></i>Phiên bản Cayenne</p>
+            </div>
+            <div class="car-dx-content-items">
+                 @foreach($products->slice(36, 4) as $product)
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                    <img src="{{asset($product->main_image )}}" alt="">
+                    <Li>{{ $product->name }}</Li>
+                    <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
+                    <li style="margin-top: 20px;"><button><i class="ri-arrow-right-wide-line"></i><a
+                                href="{{ url( $product->slug) }}">Khám phá</a></button></li>
+                    <li><button style="margin-top: 3px;"><i class="ri-shopping-cart-line"></i>Thêm giỏ hàng</button>
+                    </li>
+
+                </div>
+                  @endforeach
+            </div>
+            <section class="car-dx-content">
+                <div class="car-dx-content-items">
+                       @foreach($products->slice(40, 3) as $product)
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                    <img src="{{asset($product->main_image )}}" alt="">
+                    <Li>{{ $product->name }}</Li>
+                    <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
+                    <li style="margin-top: 20px;"><button><i class="ri-arrow-right-wide-line"></i><a
+                                href="{{ url( $product->slug) }}">Khám phá</a></button></li>
+                    <li><button style="margin-top: 3px;"><i class="ri-shopping-cart-line"></i>Thêm giỏ hàng</button>
+                    </li>
+
+                </div>
+                  @endforeach
+                </div>
+    </section>
         <hr style="margin-top: 120px;">
         <!--Contact-->
         <section class="car-contact">
@@ -267,3 +459,6 @@
 
  <script src="{{asset('frontend/asset/js/dongxe.js')}}"></script>
 </body>
+
+
+</html>

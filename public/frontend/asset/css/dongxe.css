@@ -163,6 +163,52 @@
     cursor: pointer;
 }
 
+.filter-btn.active {
+    background-color: red;
+    border: 1px solid red;
+}
+
+/*Muc gia tieu chuan*/
+.price-range-box {
+    background: rgb(240, 239, 239);
+    padding: 10px 0;
+}
+
+.price-range-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-family: 'Arial Narrow';
+    color: red;
+    margin-bottom: 8px;
+}
+
+.price-range-slider {
+    position: relative;
+}
+
+.price-range-slider input[type=range] {
+    width: 100%;
+    appearance: none;
+    height: 4px;
+    background: #d11;
+    outline: none;
+    position: absolute;
+    top: 0;
+}
+
+.price-range-slider input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 2px solid red;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
 /*Kham pha 718_1*/
 .kp_718_1_text_one {
     margin-top: 40px;
