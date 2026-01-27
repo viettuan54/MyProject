@@ -151,7 +151,7 @@
             </div>
             <div class="car-dx-content-items">
                 @foreach($products->slice(0, 2) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -171,7 +171,7 @@
             </div>
             <div class="car-dx-content-items">
                 @foreach($products->slice(4, 2) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}}" data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}}" data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -191,7 +191,7 @@
             </div>
             <div class="car-dx-content-items">
                  @foreach($products->slice(6, 4) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -206,7 +206,7 @@
             <section class="car-dx-content">
                 <div class="car-dx-content-items">
                        @foreach($products->slice(10, 1) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -225,7 +225,7 @@
             </div>
             <div class="car-dx-content-items">
                  @foreach($products->slice(11, 4) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -240,7 +240,7 @@
             <section class="car-dx-content">
                 <div class="car-dx-content-items">
                        @foreach($products->slice(15, 1) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -259,7 +259,7 @@
             </div>
             <div class="car-dx-content-items">
                  @foreach($products->slice(16, 4) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -274,7 +274,7 @@
             <section class="car-dx-content">
                 <div class="car-dx-content-items">
                        @foreach($products->slice(20, 3) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -293,7 +293,7 @@
             </div>
             <div class="car-dx-content-items">
                 @foreach($products->slice(23, 3) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} " data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} " data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -313,7 +313,7 @@
             </div>
             <div class="car-dx-content-items">
                 @foreach($products->slice(26, 2) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} " data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} " data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -333,7 +333,7 @@
             </div>
             <div class="car-dx-content-items">
                 @foreach($products->slice(28, 4) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} " data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} "data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -353,7 +353,7 @@
             </div>
             <div class="car-dx-content-items">
                 @foreach($products->slice(32, 4) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} " data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name)}} "data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -373,7 +373,7 @@
             </div>
             <div class="car-dx-content-items">
                  @foreach($products->slice(36, 4) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -388,7 +388,7 @@
             <section class="car-dx-content">
                 <div class="car-dx-content-items">
                        @foreach($products->slice(40, 3) as $product)
-                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price }}">
+                <div class="car-dx-content-item" data-name="{{ strtolower($product->name) }}" data-price="{{ $product->price_vnd }}">
                     <img src="{{asset($product->main_image )}}" alt="">
                     <Li>{{ $product->name }}</Li>
                     <li style="margin-top: 5px;">Giá tiêu chuẩn: {{ $product->price_display }}*</li>
@@ -446,19 +446,8 @@
 
 
     </main>
-    <section class="car-end">
-        <div class="car-end-text-one">
-            <p><i class="ri-store-line"></i>Store Việt Nam 2025</p>
-        </div>
-        <div class="car-end-text-two">
-            <p><u>Chính sách quyền riêng tư </u></p>
-        </div>
-    </section>
-
-
-
- <script src="{{asset('frontend/asset/js/dongxe.js')}}"></script>
+<!--FOOTER-->
+@include('User.parts.footer')
 </body>
-
-
+     <script src="{{asset('frontend/asset/js/dongxe.js')}}"></script>
 </html>

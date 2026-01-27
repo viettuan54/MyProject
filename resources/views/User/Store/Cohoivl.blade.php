@@ -138,14 +138,7 @@
         </section>
 
     </main>
-    <!--car-end-->
-    <section class="car-end">
-        <div class="car-end-text-one">
-            <p><i class="ri-store-line"></i>Store Việt Nam 2025</p>
-        </div>
-        <div class="car-end-text-two">
-            <p><u>Chính sách quyền riêng tư </u></p>
-        </div>
-    </section>
-    </main>
+<!--FOOTER-->
+@include('User.parts.footer')
 </body>
+</html>

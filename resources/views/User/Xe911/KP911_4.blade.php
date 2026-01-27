@@ -27,13 +27,8 @@
 
     @include('User.Xe911.main')
 
-    <!--car-end-->
-    <section class="car-end">
-        <div class="car-end-text-one">
-            <p><i class="ri-store-line"></i>Store Việt Nam 2025</p>
-        </div>
-        <div class="car-end-text-two">
-            <p><u>Chính sách quyền riêng tư </u></p>
-        </div>
-    </section>
-    <script src="{{asset('frontend/asset/js/dongxe.js')}}"></script>
+<!--FOOTER-->
+    @include('User.parts.footer')
+</body>
+   <script src="{{asset('frontend/asset/js/dongxe.js')}}"></script>
+</html>

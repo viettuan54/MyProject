@@ -136,7 +136,7 @@
 <div class="header-wrapper">
     <div class="header-left">
         <div class="header-search">
-            <input type="text" placeholder="Tìm kiếm ...">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm ...">
             <i class="ri-search-line"></i>
         </div>
 

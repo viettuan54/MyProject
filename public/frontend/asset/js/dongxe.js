@@ -33,6 +33,37 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3000);
     }
 });
+// tim xe bang search
+// =======================
+// SEARCH PRODUCT
+// =======================
+
+const searchInput = document.getElementById('searchInput');
+
+function filterBySearch() {
+    const keyword = searchInput.value.toLowerCase().trim();
+
+    document.querySelectorAll('.car-dx-content').forEach(section => {
+        let hasVisibleItem = false;
+
+        section.querySelectorAll('.car-dx-content-item').forEach(item => {
+            const name = item.dataset.name || '';
+
+            if (name.includes(keyword)) {
+                item.style.display = '';
+                hasVisibleItem = true;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        // Ẩn section nếu không có xe phù hợp
+        section.style.display = hasVisibleItem ? '' : 'none';
+    });
+}
+
+searchInput.addEventListener('input', filterBySearch);
+
 // tim xe bang filter(tich chon)
 const filterButtons = document.querySelectorAll('.filter-btn');
 let activeFilters = [];
@@ -85,41 +116,65 @@ function filterProducts() {
 }
 // muc gia tieu chuan
 
-// const minRange = document.getElementById('priceMin');
-// const maxRange = document.getElementById('priceMax');
-// const minText = document.getElementById('price-min-text');
-// const maxText = document.getElementById('price-max-text');
+// =======================
+// PRICE RANGE FILTER
+// =======================
 
-// function formatVND(number) {
-//     return number.toLocaleString('vi-VN') + ' vnđ';
-// }
+const minRange = document.getElementById('priceMin');
+const maxRange = document.getElementById('priceMax');
+const minText = document.getElementById('price-min-text');
+const maxText = document.getElementById('price-max-text');
 
-// function filterProductsByPrice() {
-//     let minPrice = parseInt(minRange.value);
-//     let maxPrice = parseInt(maxRange.value);
+// Format tiền VNĐ
+function formatVND(number) {
+    return number.toLocaleString('vi-VN') + ' vnđ';
+}
 
-//     if (minPrice > maxPrice) {
-//         [minRange.value, maxRange.value] = [maxPrice, minPrice];
-//         minPrice = minRange.value;
-//         maxPrice = maxRange.value;
-//     }
+// Hàm lọc
+function filterProductsByPrice() {
+    let minPrice = Number(minRange.value);
+    let maxPrice = Number(maxRange.value);
 
-//     minText.textContent = formatVND(minPrice);
-//     maxText.textContent = formatVND(maxPrice);
+    // Đảm bảo min <= max
+    if (minPrice > maxPrice) {
+        [minPrice, maxPrice] = [maxPrice, minPrice];
+        minRange.value = minPrice;
+        maxRange.value = maxPrice;
+    }
 
-//     document.querySelectorAll('.car-dx-content-item').forEach(item => {
-//         const price = parseInt(item.dataset.price);
+    // Cập nhật text
+    minText.textContent = formatVND(minPrice);
+    maxText.textContent = formatVND(maxPrice);
 
-//         if (price >= minPrice && price <= maxPrice) {
-//             item.style.display = 'block';
-//         } else {
-//             item.style.display = 'none';
-//         }
-//     });
-// }
+    // Duyệt từng section
+    document.querySelectorAll('.car-dx-content').forEach(section => {
+        let hasVisibleItem = false;
 
-// minRange.addEventListener('input', filterProductsByPrice);
-// maxRange.addEventListener('input', filterProductsByPrice);
+        // Duyệt từng xe
+        section.querySelectorAll('.car-dx-content-item').forEach(item => {
+            const price = Number(item.dataset.price); // price_vnd
 
-// filterProductsByPrice();
+            if (!price) {
+                item.style.display = 'none';
+                return;
+            }
 
+            if (price >= minPrice && price <= maxPrice) {
+                item.style.display = '';
+                hasVisibleItem = true;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        // Ẩn section nếu không còn xe nào
+        section.style.display = hasVisibleItem ? '' : 'none';
+    });
+}
+
+// Lắng nghe slider
+minRange.addEventListener('input', filterProductsByPrice);
+maxRange.addEventListener('input', filterProductsByPrice);
+
+// Khởi chạy lần đầu
+filterProductsByPrice();

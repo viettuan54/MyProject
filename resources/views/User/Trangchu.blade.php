@@ -176,7 +176,7 @@
         </section>
         <hr style="margin-top: 120px;">
 
-            <!--Contact-->
+<!--Contact-->
         <section class="car-contact">
             <div class="car-contact-conten">
                 <div class="car-contact-conten-left">
@@ -218,20 +218,8 @@
             </div>
         </section>
     </main>
-    <!--car-end-->
-    <section class="car-end">
-        <div class="car-end-text-one">
-            <p><i class="ri-store-line"></i>Store Việt Nam 2025</p>
-        </div>
-        <div class="car-end-text-two">
-            <p><u>Chính sách quyền riêng tư </u></p>
-        </div>
-          
-    </section>
-    </main>
-         <!-- @include('User.parts.footer') -->
-    <!--car-end-->
-
+<!--FOOTER-->
+    @include('User.parts.footer')       
 </body>
 <script src="{{asset('frontend/asset/js/script.js')}}"></script>
 

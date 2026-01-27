@@ -233,5 +233,7 @@ function updateQty(id, qty) {
 }
 </script>
 
+<!--FOOTER-->
+    @include('User.parts.footer')
 </body>
 </html>
