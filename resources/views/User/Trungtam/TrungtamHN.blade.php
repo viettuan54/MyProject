@@ -24,10 +24,12 @@
                 <div class="tt-sg-item">
                     <img src="{{asset('frontend/asset/images/newcar9.jpg')}}" alt="">
                     <div class="tt-sg-item-text">
+                    <a href="http://127.0.0.1:8000/xemoi">
                         <ul>
                             <li>Xe Mới</li>
                             <li style="margin-left: 370px;"><i class="ri-arrow-right-line"></i></li>
                         </ul>
+                    </a>
                     </div>
 
 
@@ -35,10 +37,12 @@
                 <div class="tt-sg-item" style="margin-left: 20px;">
                     <img src="{{asset('frontend/asset/images/newcar11.jpg')}}" alt="">
                     <div class="tt-sg-item-text">
+                    <a href="http://127.0.0.1:8000/dongxe">
                         <ul>
                             <li>Các dòng xe</li>
                             <li style="margin-left: 320px;"><i class="ri-arrow-right-line"></i></li>
                         </ul>
+                    </a>
                     </div>
 
                 </div>

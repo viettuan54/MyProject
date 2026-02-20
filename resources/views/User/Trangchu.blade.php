@@ -47,16 +47,17 @@
         <section class="content">
 
             <div class="content-one">
-                <p><i class="ri-roadster-fill"></i> Xe mới</p>
+                <a href="http://127.0.0.1:8000/xemoi" ><p><i class="ri-roadster-fill"></i> Xe mới</p></a>
             </div>
             <div class="content-one">
-                <p><i class="ri-file-list-2-line"></i> Bảng giá</p>
+                <a href="http://127.0.0.1:8000/dongxe" ><p><i class="ri-file-list-2-line"></i> Bảng giá</p></a>
             </div>
             <div class="content-one">
-                <p><i class="ri-question-answer-line"></i> Liên hệ</p>
+                  <a href="http://127.0.0.1:8000/trungtam" ><p><i class="ri-store-line"></i> Trung tâm</p></a>
             </div>
             <div class="content-one">
-                <p><i class="ri-arrow-left-right-line"></i> So sánh xe</p>
+                 <a href="http://127.0.0.1:8000/dichvu" ><p><i class="ri-service-line"></i> Dịch vụ</p></a>
+               
             </div>
 
         </section>
@@ -219,7 +220,15 @@
         </section>
     </main>
 <!--FOOTER-->
-    @include('User.parts.footer')       
+    @include('User.parts.footer')
+
+    {{-- Chatbox --}}
+    @php
+        // Đọc nội dung chatbox.html và in ra
+        echo file_get_contents(public_path('frontend/asset/chatbox.html'));
+    @endphp
+    <link rel="stylesheet" href="{{ asset('frontend/asset/chatbox.css') }}">
+    <script src="{{ asset('frontend/asset/chatbox.js') }}"></script>
 </body>
 <script src="{{asset('frontend/asset/js/script.js')}}"></script>
 

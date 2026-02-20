@@ -217,6 +217,11 @@
     align-items: center;
 }
 
+.tt-sg-item-text:hover {
+    color: red;
+    transition: color 0.5s ease;
+}
+
 .tt-sg-item-text li {
     font-size: 24px;
     font-family: 'Arial Narrow';

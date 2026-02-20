@@ -9,9 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $table = 'orders';
-
     protected $fillable = [
+        'user_id',
         'customer_name',
         'phone',
         'email',
@@ -20,10 +19,13 @@ class Order extends Model
         'payment_method',
         'status',
     ];
-
-    // nếu sau này có order_items thì để sẵn
     public function items()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

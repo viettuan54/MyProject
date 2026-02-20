@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+// Chatbot API route
+Route::middleware('api')->post('/chatbot', [\App\Http\Controllers\ChatbotController::class, 'handle']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

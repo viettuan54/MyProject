@@ -11,7 +11,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\UserOrderController;
 
 
 /*
@@ -240,3 +240,10 @@ Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.
 
 Route::post('/checkout', [CheckoutController::class, 'store'])
     ->name('checkout.store');
+Route::middleware('auth')->group(function () {
+    Route::get('/history', [UserOrderController::class, 'index'])
+        ->name('user.history');
+
+    Route::get('/history/{id}', [UserOrderController::class, 'show'])
+        ->name('user.history.show');
+});

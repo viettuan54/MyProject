@@ -150,7 +150,7 @@
         </div>
 
         <div class="header-text">
-            <p>Liên hệ</p>
+            <p>Hỗ trợ</p>
         </div>
     </div>
 
@@ -182,6 +182,9 @@
 
         @auth
             <a href="{{ url('/ttuser') }}">Thông tin</a>
+            <a href="{{ route('user.history') }}">
+                Lịch sử đơn hàng
+            </a>
 
             @if(Auth::user()->role === 'admin')
                 <a href="{{ url('/admin_dashboard') }}">Quản lý</a>
