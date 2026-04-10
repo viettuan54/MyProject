@@ -112,7 +112,7 @@ public function verifyFace(Request $request)
         ]);
     }
 
-    session()->forget('admin_verify_user_id');
+    // Không xóa session để có thể thử lại liên tục
     return response()->json([
         'status' => 'fail',
         'last_line' => $lastLine

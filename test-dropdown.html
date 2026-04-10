@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Dropdown</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            padding: 50px;
+            background: #f5f5f5;
+        }
+
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #d4001a;
+        }
+
+        /* Navigation Styles */
+        .nav-item {
+            position: relative;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 20px;
+            color: #2d3748;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #d4001a;
+            background: #fff;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            padding: 12px 0;
+            min-width: 250px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            transform: translateY(-10px);
+            z-index: 1000;
+        }
+
+        .has-dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1 !important;
+            visibility: visible !important;
+            margin-top: 5px;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #2d3748;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f9fa;
+            color: #d4001a;
+            border-left-color: #d4001a;
+            padding-left: 24px;
+        }
+
+        .status {
+            margin-top: 30px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Test Dropdown Menu</h1>
+        
+        <div style="margin-bottom: 20px;">
+            <p><strong>Hướng dẫn:</strong> Di chuột vào "Về Store" để xem dropdown menu</p>
+        </div>
+
+        <nav>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link">
+                    Về Store
+                    <i class="ri-arrow-down-s-line"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Store AG</a>
+                    <a href="#" class="dropdown-item">Store Việt Nam</a>
+                    <a href="#" class="dropdown-item">Tin tức và sự kiện</a>
+                    <a href="#" class="dropdown-item">Thông tin báo chí</a>
+                    <a href="#" class="dropdown-item">Cơ hội việc làm</a>
+                </div>
+            </div>
+
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link">
+                    Dịch vụ
+                    <i class="ri-arrow-down-s-line"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Dịch vụ bán hàng</a>
+                    <a href="#" class="dropdown-item">Dịch vụ hậu mãi</a>
+                    <a href="#" class="dropdown-item">Phụ kiện Tequipment</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="status">
+            <p><strong>✅ Trạng thái:</strong> Nếu bạn thấy menu dropdown khi hover, nghĩa là CSS hoạt động bình thường.</p>
+            <p style="margin-top: 10px;"><strong>❌ Nếu không thấy:</strong> Có thể có CSS conflict trong file header chính.</p>
+        </div>
+    </div>
+
+    <script>
+        console.log('Test page loaded successfully');
+        
+        // Log when dropdown is hovered
+        document.querySelectorAll('.has-dropdown').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                console.log('Hovering dropdown:', item.querySelector('.nav-link').textContent.trim());
+            });
+        });
+    </script>
+</body>
+</html>

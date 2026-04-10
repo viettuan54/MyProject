@@ -189,4 +189,175 @@ public function index()
     return view('Admin.ViewProduct', compact('product'));
 }
 
+    /**
+     * Search products via AJAX
+     */
+    public function search(Request $request)
+    {
+        $query = trim($request->get('q', ''));
+
+        if (mb_strlen($query) < 2) {
+            return response()->json(['results' => []]);
+        }
+
+        $exactProducts = product::where('is_active', true)
+            ->where(function ($q) use ($query) {
+                $q->where('name', 'LIKE', '%' . $query . '%')
+                    ->orWhere('category', 'LIKE', '%' . $query . '%')
+                    ->orWhere('subtitle', 'LIKE', '%' . $query . '%')
+                    ->orWhere('slug', 'LIKE', '%' . $query . '%');
+            })
+            ->select('id', 'name', 'category', 'price_display', 'main_image', 'slug')
+            ->orderByRaw("CASE
+                WHEN name LIKE ? THEN 0
+                WHEN slug LIKE ? THEN 1
+                WHEN category LIKE ? THEN 2
+                WHEN subtitle LIKE ? THEN 3
+                ELSE 4
+            END", ["%{$query}%", "%{$query}%", "%{$query}%", "%{$query}%"])
+            ->limit(8)
+            ->get();
+
+        $products = $exactProducts;
+
+        if ($products->isEmpty()) {
+            $normalizedQuery = $this->normalizeSearchText($query);
+
+            $products = product::where('is_active', true)
+                ->select('id', 'name', 'category', 'price_display', 'main_image', 'slug', 'subtitle', 'description')
+                ->get()
+                ->filter(function ($product) use ($normalizedQuery) {
+                    $haystack = $this->normalizeSearchText(implode(' ', [
+                        $product->name,
+                        $product->subtitle,
+                        $product->category,
+                        $product->slug,
+                    ]));
+
+                    return str_contains($haystack, $normalizedQuery);
+                })
+                ->take(8)
+                ->values();
+
+            if ($products->isEmpty()) {
+                $products = product::where('is_active', true)
+                    ->select('id', 'name', 'category', 'price_display', 'main_image', 'slug', 'subtitle', 'description')
+                    ->get()
+                    ->filter(function ($product) use ($normalizedQuery) {
+                        $haystack = $this->normalizeSearchText(implode(' ', [
+                            $product->name,
+                            $product->subtitle,
+                            $product->category,
+                            $product->slug,
+                            $product->description,
+                        ]));
+
+                        return str_contains($haystack, $normalizedQuery);
+                    })
+                    ->take(8)
+                    ->values();
+            }
+        }
+
+        $results = $products->map(fn($product) => $this->mapProductForSearch($product));
+
+        return response()->json(['results' => $results]);
+    }
+
+    public function searchPage(Request $request)
+    {
+        $query = trim($request->get('q', ''));
+        $products = collect();
+
+        if (mb_strlen($query) >= 2) {
+            $products = product::where('is_active', true)
+                ->where(function ($q) use ($query) {
+                    $q->where('name', 'LIKE', '%' . $query . '%')
+                        ->orWhere('category', 'LIKE', '%' . $query . '%')
+                        ->orWhere('subtitle', 'LIKE', '%' . $query . '%')
+                        ->orWhere('slug', 'LIKE', '%' . $query . '%');
+                })
+                ->orderByRaw("CASE
+                    WHEN name LIKE ? THEN 0
+                    WHEN slug LIKE ? THEN 1
+                    WHEN category LIKE ? THEN 2
+                    WHEN subtitle LIKE ? THEN 3
+                    ELSE 4
+                END", ["%{$query}%", "%{$query}%", "%{$query}%", "%{$query}%"])
+                ->orderBy('category')
+                ->orderBy('name')
+                ->get();
+
+            if ($products->isEmpty()) {
+                $normalizedQuery = $this->normalizeSearchText($query);
+
+                $products = product::where('is_active', true)
+                    ->get()
+                    ->filter(function ($product) use ($normalizedQuery) {
+                        $haystack = $this->normalizeSearchText(implode(' ', [
+                            $product->name,
+                            $product->subtitle,
+                            $product->category,
+                            $product->slug,
+                        ]));
+
+                        return str_contains($haystack, $normalizedQuery);
+                    })
+                    ->values();
+
+                if ($products->isEmpty()) {
+                    $products = product::where('is_active', true)
+                        ->get()
+                        ->filter(function ($product) use ($normalizedQuery) {
+                            $haystack = $this->normalizeSearchText(implode(' ', [
+                                $product->name,
+                                $product->subtitle,
+                                $product->category,
+                                $product->slug,
+                                $product->description,
+                            ]));
+
+                            return str_contains($haystack, $normalizedQuery);
+                        })
+                        ->values();
+                }
+            }
+        }
+
+        $productsByCategory = $products->groupBy(function ($product) {
+            return $product->category ?: 'Sản phẩm khác';
+        });
+
+        return view('User.SearchResults', [
+            'query' => $query,
+            'products' => $products,
+            'productsByCategory' => $productsByCategory,
+        ]);
+    }
+
+    private function mapProductForSearch(product $product): array
+    {
+        $productUrl = $product->slug ? url('/' . ltrim($product->slug, '/')) : route('products.view', $product->id);
+
+        return [
+            'id' => $product->id,
+            'name' => $product->name,
+            'category' => $product->category,
+            'price' => $product->price_display,
+            'image' => asset($product->main_image),
+            'url' => $productUrl,
+        ];
+    }
+
+    private function normalizeSearchText(?string $text): string
+    {
+        $normalized = Str::of((string) $text)
+            ->lower()
+            ->ascii()
+            ->replaceMatches('/\s+/', ' ')
+            ->trim()
+            ->value();
+
+        return $normalized;
+    }
 }

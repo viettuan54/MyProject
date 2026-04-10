@@ -57,6 +57,8 @@ Route::get('/admin_product/{id}/edit', [ProductController::class, 'edit'])->name
 Route::put('/admin_product/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/admin_product/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 Route::get('/admin_product/{id}/view', [ProductController::class, 'view'])->name('products.view');
+Route::get('/api/search', [ProductController::class, 'search'])->name('product.search');
+Route::get('/tim-kiem', [ProductController::class, 'searchPage'])->name('product.search.page');
 Route::get('/admin_dmuc', function () {
     return view('Admin/Dmuc');
 });

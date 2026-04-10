@@ -16,3 +16,9 @@
 
     </div>
 </footer>
+
+{{-- Chatbox --}}
+@include('User.parts.chatbox')
+
+<!-- Luxury Header JavaScript -->
+<script src="{{asset('frontend/asset/js/luxury-header.js')}}"></script>

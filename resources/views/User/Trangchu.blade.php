@@ -221,14 +221,6 @@
     </main>
 <!--FOOTER-->
     @include('User.parts.footer')
-
-    {{-- Chatbox --}}
-    @php
-        // Đọc nội dung chatbox.html và in ra
-        echo file_get_contents(public_path('frontend/asset/chatbox.html'));
-    @endphp
-    <link rel="stylesheet" href="{{ asset('frontend/asset/chatbox.css') }}">
-    <script src="{{ asset('frontend/asset/chatbox.js') }}"></script>
 </body>
 <script src="{{asset('frontend/asset/js/script.js')}}"></script>
 

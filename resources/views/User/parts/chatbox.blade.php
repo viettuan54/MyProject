@@ -1,4 +1,4 @@
-<!-- Chatbox HTML - Porsche Style -->
+{{-- Chatbox Partial --}}
 
 <!-- Nút mở chatbox -->
 <button id="chatbox-toggle" title="Hỗ trợ trực tuyến">
@@ -37,3 +37,6 @@
         </button>
     </div>
 </div>
+
+<link rel="stylesheet" href="{{ asset('frontend/asset/chatbox.css') }}">
+<script src="{{ asset('frontend/asset/chatbox.js') }}"></script>
