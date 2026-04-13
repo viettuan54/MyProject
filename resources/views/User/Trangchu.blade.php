@@ -144,9 +144,9 @@
         <section class="discovery">
             <div class="discovery-items">
                 <div class="discovery-item">
-                    <img src="{{asset('frontend/asset/images/carkp1.jpg')}}" alt="">
+                    <img src="{{asset('frontend/asset/images/Carkp9.jpg')}}" alt="">
                     <div class="discovery-item-text">
-                        <p><i class="ri-arrow-right-wide-line"></i>Bản tin dịch vụ xe 2025 - số 1</p>
+                        <p><i class="ri-arrow-right-wide-line"></i>Ghế trẻ em Tequipment: An toàn theo thiết kế của Porsche</p>
 
                     </div>
                 </div>
@@ -158,16 +158,16 @@
                     </div>
                 </div>
                 <div class="discovery-item">
-                    <img src="{{asset('frontend/asset/images/carkp3.jpg')}}" alt="">
+                    <img src="{{asset('frontend/asset/images/Carkp7.jpg')}}" alt="">
                     <div class="discovery-item-text">
-                        <p><i class="ri-arrow-right-wide-line"></i>Dịch vụ chăm sóc xe mùa nóng bắt đầu từ 12/5/2025</p>
+                        <p><i class="ri-arrow-right-wide-line"></i>Ưu đãi Dịch vụ Chăm sóc xe Mùa nóng 23.03 – 06.05.2026</p>
 
                     </div>
                 </div>
                 <div class="discovery-item">
-                    <img src="{{asset('frontend/asset/images/carkp6.png')}}" alt="">
+                    <img src="{{asset('frontend/asset/images/Carkp8.jpg')}}" alt="">
                     <div class="discovery-item-text">
-                        <p><i class="ri-arrow-right-wide-line"></i>Ưu đãi đặc biệt phụ kiện xe hơi giá rẻ chất lượng
+                        <p><i class="ri-arrow-right-wide-line"></i>Dịch vụ Bảo dưỡng Lưu động 2026 của Porsche
                         </p>
 
                     </div>
@@ -175,7 +175,7 @@
 
             </div>
         </section>
-        <hr style="margin-top: 120px;">
+        <hr style="margin-top: 80px;">
 
 <!--Contact-->
         <section class="car-contact">
