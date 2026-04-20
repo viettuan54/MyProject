@@ -12,6 +12,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserOrderController;
+use App\Http\Controllers\ProductReviewController;
+use App\Http\Controllers\UserChatController;
 
 
 /*
@@ -232,6 +234,20 @@ Route::get('/tieudiem', function () {
     return view('User/Tieudiem');
 });
 
+Route::middleware(['auth'])->group(function () {
+    // Kênh trò chuyện giữa người dùng
+    Route::get('/kenh-tro-truyen', [UserChatController::class, 'index'])
+        ->name('user.chat.index');
+    Route::get('/kenh-tro-truyen/messages', [UserChatController::class, 'stream'])
+        ->name('user.chat.stream');
+    Route::post('/kenh-tro-truyen/messages', [UserChatController::class, 'send'])
+        ->name('user.chat.send');
+    Route::delete('/kenh-tro-truyen/messages/{message}', [UserChatController::class, 'deleteMessage'])
+        ->name('user.chat.delete');
+    Route::delete('/kenh-tro-truyen/messages', [UserChatController::class, 'deleteAllMessages'])
+        ->name('user.chat.deleteAll');
+});
+
 // Gio hang
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
@@ -248,4 +264,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/history/{id}', [UserOrderController::class, 'show'])
         ->name('user.history.show');
+
+    Route::post('/products/{product}/reviews', [ProductReviewController::class, 'store'])
+        ->name('products.reviews.store');
 });

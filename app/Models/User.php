@@ -29,6 +29,21 @@ protected $fillable = [
     'role',
     'face_label',
 ];
+
+    public function sentChatMessages()
+    {
+        return $this->hasMany(ChatMessage::class, 'sender_id');
+    }
+
+    public function receivedChatMessages()
+    {
+        return $this->hasMany(ChatMessage::class, 'recipient_id');
+    }
+
+    public function productReviews()
+    {
+        return $this->hasMany(ProductReview::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -26,7 +26,7 @@ class CheckoutController extends Controller
     ]);
     // 1️⃣ TẠO ĐƠN HÀNG (PHẢI CÓ TRƯỚC)
     $order = Order::create([
-        'user_id'        => Auth::check() ? Auth::id() : null, // ✅ DÒNG DUY NHẤT THÊM
+        'user_id'        => Auth::check() ? Auth::id() : null, 
         'customer_name'  => $request->customer_name,
         'phone'          => $request->phone,
         'email'          => $request->email,

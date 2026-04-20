@@ -122,4 +122,5 @@
 
             </div>
         </section>
+        @include('User.parts.product-reviews', ['product' => $product])
     </main>

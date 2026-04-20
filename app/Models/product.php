@@ -37,4 +37,9 @@ class product extends Model
         'gallery' => 'json',
         'is_active' => 'boolean',
     ];
+
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class);
+    }
 }

@@ -9,19 +9,24 @@ document.addEventListener('DOMContentLoaded', function () {
     // STICKY HEADER
     // ================================================
     const header = document.querySelector('.luxury-header');
+    const isChatChannelPage = document.body.classList.contains('chat-channel-page');
     let lastScroll = 0;
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+    if (!isChatChannelPage && header) {
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
 
-        if (currentScroll > 100) {
-            header.classList.add('sticky');
-        } else {
-            header.classList.remove('sticky');
-        }
+            if (currentScroll > 100) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
 
-        lastScroll = currentScroll;
-    });
+            lastScroll = currentScroll;
+        });
+    } else if (header) {
+        header.classList.remove('sticky');
+    }
 
     // ================================================
     // SEARCH OVERLAY

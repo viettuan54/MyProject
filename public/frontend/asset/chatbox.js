@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let isOpen = false;
     let hasShownWelcome = false;
+    let isSending = false;
 
     // Quick suggestions
     const suggestions = [
@@ -118,8 +119,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Gửi tin nhắn
     function sendMessage() {
+        if (isSending) return;
+
         const question = chatboxInput.value.trim();
         if (!question) return;
+
+        isSending = true;
+        if (chatboxSend) chatboxSend.disabled = true;
+        if (chatboxInput) chatboxInput.disabled = true;
 
         // Hiển thị tin nhắn user
         appendMessage(question, 'user');
@@ -128,27 +135,52 @@ document.addEventListener('DOMContentLoaded', function () {
         // Hiển thị typing
         showTyping();
 
+        // Get CSRF token from meta tag
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
         // Gửi request
         fetch('/api/chatbot', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
+                ...(csrfToken && { 'X-CSRF-TOKEN': csrfToken })
             },
             body: JSON.stringify({ question })
         })
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
             .then(data => {
+                if (!data.answer) {
+                    throw new Error('Invalid response format');
+                }
                 // Delay để tạo cảm giác tự nhiên
                 setTimeout(() => {
                     hideTyping();
                     appendMessage(data.answer, 'bot');
+                    isSending = false;
+                    if (chatboxSend) chatboxSend.disabled = false;
+                    if (chatboxInput) {
+                        chatboxInput.disabled = false;
+                        chatboxInput.focus();
+                    }
                 }, 600 + Math.random() * 400);
             })
-            .catch(() => {
+            .catch((error) => {
+                console.error('Chatbot error:', error);
                 setTimeout(() => {
                     hideTyping();
-                    appendMessage('Xin lỗi, có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ hotline: 028 3911 9111', 'bot');
+                    appendMessage('Xin lỗi, tôi gặp sự cố kết nối. Vui lòng thử lại sau ít giây hoặc liên hệ:\n\n📞 028 3911 9111 (TP.HCM)\n📞 024 3795 9111 (Hà Nội)', 'bot');
+                    isSending = false;
+                    if (chatboxSend) chatboxSend.disabled = false;
+                    if (chatboxInput) {
+                        chatboxInput.disabled = false;
+                        chatboxInput.focus();
+                    }
                 }, 500);
             });
     }

@@ -19,8 +19,10 @@
     position: relative;
     background: #ffffff;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-    z-index: 1000;
+    z-index: 10000;
     transition: all 0.4s var(--transition-smooth);
+    overflow: visible;
+    isolation: isolate;
 }
 
 .luxury-header.sticky {
@@ -57,6 +59,9 @@
 .header-container {
     max-width: 1440px;
     margin: 0 auto;
+    position: relative;
+    z-index: 10001;
+    overflow: visible;
 }
 
 /* ================================================
@@ -690,6 +695,8 @@
 .header-main {
     position: relative;
     padding: 0 60px;
+    z-index: 10001;
+    overflow: visible;
 }
 
 /* Logo Center */
@@ -734,6 +741,9 @@
    ================================================ */
 .header-nav {
     border-top: 1px solid rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 10002;
+    overflow: visible;
 }
 
 .nav-menu {
@@ -746,6 +756,7 @@
 
 .luxury-header .nav-item {
     position: relative !important;
+    z-index: 10002;
 }
 
 .luxury-header .nav-link {
@@ -798,7 +809,7 @@
     opacity: 0 !important;
     visibility: hidden !important;
     transition: all 0.4s var(--transition-smooth) !important;
-    z-index: 9999 !important;
+    z-index: 50000 !important;
     border-top: 3px solid var(--porsche-red) !important;
     display: block !important;
 }
@@ -902,7 +913,7 @@
     transition: all 0.3s var(--transition-smooth) !important;
     padding: 12px 0 !important;
     border-top: 3px solid var(--porsche-red) !important;
-    z-index: 9999 !important;
+    z-index: 50000 !important;
     display: block !important;
 }
 

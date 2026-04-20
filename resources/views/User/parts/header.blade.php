@@ -11,6 +11,10 @@
                     <i class="ri-customer-service-line"></i>
                     <span>Hỗ trợ</span>
                 </a>
+                <a href="{{ url('/kenh-tro-truyen') }}" class="topbar-link">
+                    <i class="ri-message-3-line"></i>
+                    <span>Kênh trò chuyện</span>
+                </a>
             </div>
             <div class="topbar-right">
                 <!-- Search -->

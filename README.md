@@ -1,70 +1,92 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ProjectCar - Porsche E-Commerce Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**ProjectCar** là một nền tảng bán xe Porsche trực tuyến hiện đại được xây dựng bằng Laravel 10 và Vite.
 
-## About Laravel
+## 🚀 Tính Năng Chính
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 👥 Người Dùng
+- **Duyệt Sản Phẩm**: Khám phá các mẫu xe Porsche (718, 911, Taycan, Panamera, Macan, Cayenne)
+- **Giỏ Hàng**: Thêm/xóa sản phẩm, quản lý số lượng
+- **Thanh Toán**: Quy trình checkout đơn giản
+- **Quản Lý Đơn Hàng**: Xem lịch sử và chi tiết đơn hàng
+- **Đánh Giá Sản Phẩm**: Viết và xem reviews
+- **Chatbot AI**: Hỗ trợ khách hàng 24/7 với Google Gemini
+- **Dịch Vụ**: Bảo hiểm, bảo trì, chương trình khuyến mại, hỗ trợ tài chính
+- **Cửa Hàng**: Tìm cửa hàng và trung tâm dịch vụ
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 👨‍💼 Admin
+- **Dashboard**: Tổng quan thống kê hệ thống
+- **Quản Lý Sản Phẩm**: Thêm/sửa/xóa xe và phụ kiện
+- **Quản Lý Danh Mục**: Tổ chức sản phẩm
+- **Quản Lý Đơn Hàng**: Duyệt, phê duyệt/từ chối đơn hàng
+- **Quản Lý Người Dùng**: Kiểm soát tài khoản người dùng
+- **Xác Thực Khuôn Mặt**: Bảo mật nâng cao với FaceNet
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🛠️ Tech Stack
 
-## Learning Laravel
+| Thành Phần | Công Nghệ |
+|-----------|-----------|
+| **Backend** | Laravel 10, PHP 8.1+ |
+| **Frontend** | Vite 4, JavaScript, Blade Templates |
+| **Database** | MySQL |
+| **API** | Laravel Sanctum |
+| **AI** | Google Gemini 2.0 Flash |
+| **Biometric** | FaceNet (Face Recognition) |
+| **Tools** | PHPUnit, Laravel Pint, Faker |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📦 Cài Đặt
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Yêu Cầu
+- PHP 8.1+
+- MySQL
+- Composer
+- Node.js & npm
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Bước Cài Đặt
+```bash
+# Clone repository
+git clone <repository-url>
+cd ProjectCar
 
-## Laravel Sponsors
+# Cài đặt dependencies
+composer install
+npm install
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# Cấu hình environment
+cp .env.example .env
 
-### Premium Partners
+# Tạo APP_KEY
+php artisan key:generate
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+# Chạy migrations
+php artisan migrate
 
-## Contributing
+# Build frontend
+npm run build
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Chạy server
+php artisan serve
+```
 
-## Code of Conduct
+## 🔑 Cấu Hình API Keys
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Google Gemini API
+Để sử dụng chatbot AI, cần cấu hình Google Gemini API:
 
-## Security Vulnerabilities
+1. Truy cập [Google AI Studio](https://aistudio.google.com)
+2. Tạo API key mới
+3. Copy key vào file `.env`:
+```env
+GEMINI_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-2.0-flash
+GEMINI_ENDPOINT=https://generativelanguage.googleapis.com/v1beta/models
+GEMINI_TEMPERATURE=0.2
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 📚 Tài Liệu
 
-## License
+- [CART_IMPLEMENTATION_GUIDE.md](./CART_IMPLEMENTATION_GUIDE.md) - Hướng dẫn hệ thống giỏ hàng
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# Myproject
->>>>>>> bc96bb83fa18426d4192afa12c673d30077ba67e
+## 📄 License
+
+MIT License
