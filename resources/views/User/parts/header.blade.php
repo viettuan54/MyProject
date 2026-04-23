@@ -54,10 +54,14 @@
                     </div>
                 </div>
                 
+                @php
+                    $cartCount = collect(session('cart', []))->sum('quantity');
+                @endphp
+
                 <!-- Cart -->
                 <a href="{{ url('/cart') }}" class="topbar-icon cart-icon">
                     <i class="ri-shopping-cart-2-line"></i>
-                    <span class="cart-badge">0</span>
+                    <span class="cart-badge">{{ $cartCount }}</span>
                 </a>
                 
                 <!-- User -->

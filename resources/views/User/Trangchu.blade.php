@@ -67,157 +67,246 @@
         <!--xe-->
         <section class="car-line">
             <div class="car-line-one">
-                <div class="car-line-one-item">
-                    <img src="{{asset('frontend/asset/images/slider1.png')}}" alt="">
+                <a href="http://127.0.0.1:8000/dongxe718" class="car-line-one-item">
+                    <img src="{{asset('frontend/asset/images/slider1.png')}}" alt="718">
                     <div class="car-line-one-item-info">
                         <h1><i class="ri-arrow-right-wide-line"></i>718</h1>
                         <p>Giá từ 3.850.000.000 VND</p>
                         <p><i class="ri-arrow-right-wide-line"></i>Tất cả mẫu xe</p>
                         <p><i class="ri-arrow-right-wide-line"></i>So Sánh</p>
-
                     </div>
-
-                </div>
-                <div class="car-line-one-item">
-                    <img src="{{asset('frontend/asset/images/slider2.png')}}" alt="">
+                </a>
+                <a href="http://127.0.0.1:8000/dongxe911" class="car-line-one-item">
+                    <img src="{{asset('frontend/asset/images/slider2.png')}}" alt="911">
                     <div class="car-line-one-item-info">
                         <h1><i class="ri-arrow-right-wide-line"></i>911</h1>
                         <p>Giá từ 8.870.000.000 VND</p>
                         <p><i class="ri-arrow-right-wide-line"></i>Tất cả mẫu xe</p>
                         <p><i class="ri-arrow-right-wide-line"></i>So Sánh</p>
-
                     </div>
-
-                </div>
-                <div class="car-line-one-item">
-                    <img src="{{asset('frontend/asset/images/slider3.png')}}" alt="">
+                </a>
+                <a href="http://127.0.0.1:8000/dongxetaycan" class="car-line-one-item">
+                    <img src="{{asset('frontend/asset/images/slider3.png')}}" alt="Taycan">
                     <div class="car-line-one-item-info">
                         <h1><i class="ri-arrow-right-wide-line"></i>Taycan</h1>
                         <p>Giá từ 4.620.000.000 VND</p>
                         <p><i class="ri-arrow-right-wide-line"></i>Tất cả mẫu xe</p>
                         <p><i class="ri-arrow-right-wide-line"></i>So Sánh</p>
-
                     </div>
-
-                </div>
-                <div class="car-line-one-item">
-                    <img src="{{asset('frontend/asset/images/slider4.png')}}" alt="">
+                </a>
+                <a href="http://127.0.0.1:8000/dongxepana" class="car-line-one-item">
+                    <img src="{{asset('frontend/asset/images/slider4.png')}}" alt="Panamera">
                     <div class="car-line-one-item-info">
                         <h1><i class="ri-arrow-right-wide-line"></i>Panamera</h1>
                         <p>Giá từ 6.420.000.000 VND</p>
                         <p><i class="ri-arrow-right-wide-line"></i>Tất cả mẫu xe</p>
                         <p><i class="ri-arrow-right-wide-line"></i>So Sánh</p>
-
                     </div>
-
-                </div>
-                <div class="car-line-one-item">
-                    <img src="{{asset('frontend/asset/images/slider5.png')}}" alt="">
+                </a>
+                <a href="http://127.0.0.1:8000/dongxemacan" class="car-line-one-item">
+                    <img src="{{asset('frontend/asset/images/slider5.png')}}" alt="Macan">
                     <div class="car-line-one-item-info">
                         <h1><i class="ri-arrow-right-wide-line"></i>Macan</h1>
                         <p>Giá từ 3.350.000.000 VND</p>
                         <p><i class="ri-arrow-right-wide-line"></i>Tất cả mẫu xe</p>
                         <p><i class="ri-arrow-right-wide-line"></i>So Sánh</p>
-
                     </div>
-                </div>
+                </a>
             </div>
             <div class="car-line-two">
-                <div class="car-line-one-item">
-                    <img src="{{asset('frontend/asset/images/slider6.png')}}" alt="">
+                <a href="http://127.0.0.1:8000/dongxecayne" class="car-line-one-item">
+                    <img src="{{asset('frontend/asset/images/slider6.png')}}" alt="Cayenne">
                     <div class="car-line-one-item-info">
                         <h1><i class="ri-arrow-right-wide-line"></i>Cayenne</h1>
                         <p>Giá từ 5.560.000.000 VND</p>
                         <p><i class="ri-arrow-right-wide-line"></i>Tất cả mẫu xe</p>
                         <p><i class="ri-arrow-right-wide-line"></i>So Sánh</p>
-
                     </div>
-                </div>
+                </a>
 
             </div>
 
         </section>
+
+        <!-- xe noi bat -->
+        <section class="featured-cars" aria-label="Xe nổi bật">
+            <div class="Text">
+                <p>Xe nổi bật</p>
+            </div>
+
+            <div class="featured-cars-list">
+                <div class="featured-cars-marquee marquee-row-one">
+                    <div class="featured-cars-track">
+                        <a href="{{ url('/911-carrera') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_911_1_2.png')}}" alt="911 Carrera">
+                        </a>
+                        <a href="{{ url('/911-carrera-s') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_911_3_2.png')}}" alt="911 Carrera S">
+                        </a>
+                        <a href="{{ url('/718-boxster') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_718_1_2.png')}}" alt="718 Boxster">
+                        </a>
+                        <a href="{{ url('/718-cayman-s') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_718_4_2.png')}}" alt="718 Cayman S">
+                        </a>
+                        <a href="{{ url('/taycan') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_taycan_1_2.png')}}" alt="Taycan">
+                        </a>
+                        <a href="{{ url('/taycan-turbo') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_taycan_6_2.png')}}" alt="Taycan Turbo">
+                        </a>
+                        <a href="{{ url('/macan-gts') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_mc_4_2.png')}}" alt="Macan GTS">
+                        </a>
+                        <a href="{{ url('/cayenne-gts') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_ce_4_2.png')}}" alt="Cayenne GTS">
+                        </a>
+
+                        <a href="{{ url('/911-carrera') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_911_1_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/911-carrera-s') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_911_3_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/718-boxster') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_718_1_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/718-cayman-s') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_718_4_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/taycan') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_taycan_1_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/taycan-turbo') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_taycan_6_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/macan-gts') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_mc_4_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/cayenne-gts') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_ce_4_2.png')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="featured-cars-marquee marquee-row-two">
+                    <div class="featured-cars-track">
+                        <a href="{{ url('/cayenne-gts') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_ce_4_2.png')}}" alt="Cayenne GTS">
+                        </a>
+                        <a href="{{ url('/macan-gts') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_mc_4_2.png')}}" alt="Macan GTS">
+                        </a>
+                        <a href="{{ url('/taycan-turbo') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_taycan_6_2.png')}}" alt="Taycan Turbo">
+                        </a>
+                        <a href="{{ url('/taycan') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_taycan_1_2.png')}}" alt="Taycan">
+                        </a>
+                        <a href="{{ url('/718-cayman-s') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_718_4_2.png')}}" alt="718 Cayman S">
+                        </a>
+                        <a href="{{ url('/718-boxster') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_718_1_2.png')}}" alt="718 Boxster">
+                        </a>
+                        <a href="{{ url('/911-carrera-s') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_911_3_2.png')}}" alt="911 Carrera S">
+                        </a>
+                        <a href="{{ url('/911-carrera') }}" class="featured-car-item">
+                            <img src="{{asset('frontend/asset/images/kp_911_1_2.png')}}" alt="911 Carrera">
+                        </a>
+
+                        <a href="{{ url('/cayenne-gts') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_ce_4_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/macan-gts') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_mc_4_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/taycan-turbo') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_taycan_6_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/taycan') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_taycan_1_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/718-cayman-s') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_718_4_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/718-boxster') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_718_1_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/911-carrera-s') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_911_3_2.png')}}" alt="">
+                        </a>
+                        <a href="{{ url('/911-carrera') }}" class="featured-car-item" aria-hidden="true" tabindex="-1">
+                            <img src="{{asset('frontend/asset/images/kp_911_1_2.png')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="Text">
             <p>Khám phá</p>
         </section>
         <!---discovery-->
         <section class="discovery">
-            <div class="discovery-items">
-                <div class="discovery-item">
-                    <img src="{{asset('frontend/asset/images/Carkp9.jpg')}}" alt="">
-                    <div class="discovery-item-text">
-                        <p><i class="ri-arrow-right-wide-line"></i>Ghế trẻ em Tequipment: An toàn theo thiết kế của Porsche</p>
-
+            <div class="discovery-showcase">
+                <article class="discovery-layout-item">
+                    <div class="discovery-layout-info">
+                        <div class="discovery-layout-icon">
+                            <i class="ri-steering-2-line"></i>
+                        </div>
+                        <h3>Ghế trẻ em Tequipment</h3>
+                        <p>An toàn theo thiết kế của Porsche, mang đến sự yên tâm và đồng bộ cho mọi hành trình cùng gia đình.</p>
                     </div>
-                </div>
-                <div class="discovery-item">
-                    <img src="{{asset('frontend/asset/images/carkp5.png')}}" alt="">
-                    <div class="discovery-item-text">
-                        <p><i class="ri-arrow-right-wide-line"></i>Bộ sưu tập xe giới hạn trên toàn thế giới</p>
-
+                    <div class="discovery-layout-image">
+                        <img src="{{asset('frontend/asset/images/Carkp9.jpg')}}" alt="Ghế trẻ em Tequipment">
                     </div>
-                </div>
-                <div class="discovery-item">
-                    <img src="{{asset('frontend/asset/images/Carkp7.jpg')}}" alt="">
-                    <div class="discovery-item-text">
-                        <p><i class="ri-arrow-right-wide-line"></i>Ưu đãi Dịch vụ Chăm sóc xe Mùa nóng 23.03 – 06.05.2026</p>
+                </article>
 
+                <article class="discovery-layout-item">
+                    <div class="discovery-layout-info">
+                        <div class="discovery-layout-icon">
+                            <i class="ri-vip-diamond-line"></i>
+                        </div>
+                        <h3>Bộ sưu tập xe giới hạn</h3>
+                        <p>Tuyển chọn các mẫu xe hiếm trên toàn thế giới với cấu hình độc bản, hiệu năng cao và giá trị sưu tầm đặc biệt.</p>
                     </div>
-                </div>
-                <div class="discovery-item">
-                    <img src="{{asset('frontend/asset/images/Carkp8.jpg')}}" alt="">
-                    <div class="discovery-item-text">
-                        <p><i class="ri-arrow-right-wide-line"></i>Dịch vụ Bảo dưỡng Lưu động 2026 của Porsche
-                        </p>
-
+                    <div class="discovery-layout-image">
+                        <img src="{{asset('frontend/asset/images/carkp5.png')}}" alt="Bộ sưu tập xe giới hạn">
                     </div>
-                </div>
+                </article>
 
+                <article class="discovery-layout-item">
+                    <div class="discovery-layout-info">
+                        <div class="discovery-layout-icon">
+                            <i class="ri-service-line"></i>
+                        </div>
+                        <h3>Ưu đãi chăm sóc xe mùa nóng</h3>
+                        <p>Gói kiểm tra và chăm sóc chuyên sâu giúp xe luôn vận hành tối ưu trong điều kiện thời tiết khắc nghiệt.</p>
+                    </div>
+                    <div class="discovery-layout-image">
+                        <img src="{{asset('frontend/asset/images/Carkp7.jpg')}}" alt="Ưu đãi chăm sóc xe mùa nóng">
+                    </div>
+                </article>
+
+                <article class="discovery-layout-item">
+                    <div class="discovery-layout-info">
+                        <div class="discovery-layout-icon">
+                            <i class="ri-truck-line"></i>
+                        </div>
+                        <h3>Bảo dưỡng lưu động 2026</h3>
+                        <p>Dịch vụ kỹ thuật linh hoạt tại điểm hẹn, hỗ trợ nhanh chóng để trải nghiệm vận hành luôn liền mạch.</p>
+                    </div>
+                    <div class="discovery-layout-image">
+                        <img src="{{asset('frontend/asset/images/Carkp8.jpg')}}" alt="Dịch vụ bảo dưỡng lưu động 2026">
+                    </div>
+                </article>
             </div>
         </section>
-        <hr style="margin-top: 80px;">
 
 <!--Contact-->
-        <section class="car-contact">
-            <div class="car-contact-conten">
-                <div class="car-contact-conten-left">
-                    <p>Thông tin liên lạc:</p>
-                    <p>STORECAR Việt Nam</p>
-                    <p>Liên hệ chúng tôi: Viettuannger@gmail.com</p>
-                    <p>Dịch vụ khách hàng: Storecar54@gmail.com</p>
-                    <p>Các trung tâm của store</p>
-                    <p>Trung tâm store TP.Hà Nội</p>
-                    <p>Trung tâm store TP.Hồ Chí Minh</p>
-                    <p>Trung tâm store TP.Sài Gòn</p>
-                </div>
-                <div class="car-contact-conten-right">
-                    <div class="car-contact-conten-right-one">
-                        <button><i class="ri-share-fill"></i> Chia sẻ trang</button>
-
-                    </div>
-                    <div class="car-contact-conten-right-two">
-                        <p>Kết nối với Store</p>
-
-                    </div>
-                    <div class="car-contact-conten-right-three">
-                        <div class="car-contact-conten-right-three-subset">
-                            <i class="ri-facebook-fill"></i>
-
-                        </div>
-                        <div class="car-contact-conten-right-three-subset">
-                            <i class="ri-youtube-line"></i>
-
-                        </div>
-                        <div class="car-contact-conten-right-three-subset">
-                            <i class="ri-instagram-line"></i>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
+@include('User.parts.conatct')
     </main>
 <!--FOOTER-->
     @include('User.parts.footer')

@@ -38,5 +38,5 @@
     </div>
 </div>
 
-<link rel="stylesheet" href="{{ asset('frontend/asset/chatbox.css') }}">
-<script src="{{ asset('frontend/asset/chatbox.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('frontend/asset/chatbox.css') }}?v=20260422-1">
+<script src="{{ asset('frontend/asset/chatbox.js') }}?v=20260422-1"></script>

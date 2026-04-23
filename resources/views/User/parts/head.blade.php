@@ -3,7 +3,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="{{asset('frontend/asset/css/trangchu.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/asset/css/trangchu.css')}}?v=20260421">
     <link rel="stylesheet" href="{{asset('frontend/asset/css/xemoi.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/asset/css/trungtam.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/asset/css/dichvu.css')}}">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{asset('frontend/asset/css/cart.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/asset/css/footer.css')}}">
     <!-- Luxury Premium Header CSS -->
-    <link rel="stylesheet" href="{{asset('frontend/asset/css/luxury-header.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/asset/css/luxury-header.css')}}?v=20260422-3">
     
     <!-- Inline CSS Override for Dropdown Fix -->
     <style>

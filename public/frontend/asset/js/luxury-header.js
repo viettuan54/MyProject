@@ -309,28 +309,50 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // ================================================
-    // USER DROPDOWN CLICK BEHAVIOR ON MOBILE
+    // USER DROPDOWN (Desktop hover + Mobile click)
     // ================================================
-    if (window.innerWidth <= 768) {
-        const userMenu = document.querySelector('.header-user-menu');
-        const userDropdown = document.querySelector('.user-dropdown-menu');
+    const userMenu = document.querySelector('.header-user-menu');
+    const userDropdown = document.querySelector('.user-dropdown-menu');
 
-        if (userMenu && userDropdown) {
+    if (userMenu && userDropdown) {
+        let closeUserDropdownTimer;
+
+        const openUserDropdown = () => {
+            clearTimeout(closeUserDropdownTimer);
+            userMenu.classList.add('is-open');
+        };
+
+        const closeUserDropdown = (delay = 180) => {
+            clearTimeout(closeUserDropdownTimer);
+            closeUserDropdownTimer = setTimeout(() => {
+                userMenu.classList.remove('is-open');
+            }, delay);
+        };
+
+        if (window.matchMedia('(min-width: 769px)').matches) {
+            userMenu.addEventListener('mouseenter', openUserDropdown);
+            userMenu.addEventListener('mouseleave', () => closeUserDropdown(180));
+            userDropdown.addEventListener('mouseenter', openUserDropdown);
+            userDropdown.addEventListener('mouseleave', () => closeUserDropdown(180));
+        }
+
+        if (window.matchMedia('(max-width: 768px)').matches) {
             userMenu.addEventListener('click', (e) => {
                 e.stopPropagation();
-                userDropdown.style.display =
-                    userDropdown.style.display === 'block' ? 'none' : 'block';
-                userDropdown.style.opacity =
-                    userDropdown.style.opacity === '1' ? '0' : '1';
-                userDropdown.style.visibility =
-                    userDropdown.style.visibility === 'visible' ? 'hidden' : 'visible';
+
+                if (userMenu.classList.contains('is-open')) {
+                    userMenu.classList.remove('is-open');
+                } else {
+                    openUserDropdown();
+                }
             });
 
-            // Close dropdown when clicking outside
+            userDropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+
             document.addEventListener('click', () => {
-                userDropdown.style.display = 'none';
-                userDropdown.style.opacity = '0';
-                userDropdown.style.visibility = 'hidden';
+                userMenu.classList.remove('is-open');
             });
         }
     }

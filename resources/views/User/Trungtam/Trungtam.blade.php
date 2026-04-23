@@ -95,59 +95,8 @@
             </div>
 
         </section>
-        <hr style="margin-top: 120px;">
-        <section class="car-contact">
-            <div class="car-contact-conten">
-                <div class="car-contact-conten-left">
-                    <p>Thông tin liên lạc:</p>
-                    <p>STORECAR Việt Nam</p>
-                    <p>Liên hệ chúng tôi: Viettuannger@gmail.com</p>
-                    <p>Dịch vụ khách hàng: Storecar54@gmail.com</p>
-                    <p>Các trung tâm của store</p>
-                    <p>Trung tâm store TP.Hà Nội</p>
-                    <p>Trung tâm store TP.Hồ Chí Minh</p>
-                    <p>Trung tâm store TP.Sài Gòn</p>
-                </div>
-                <div class="car-contact-conten-right">
-                    <div class="car-contact-conten-right-newcar">
-                        <ul>
-                            <li>Thông tin về Store</li>
-                            <li>Store Việt Nam </li>
-                            <li>Tin tức và sự kiện </li>
-                            <li>Thông tin báo chí</li>
-                            <li>Cơ hội việc làm</li>
-                        </ul>
+         @include('User.parts.conatct')
 
-                    </div>
-
-
-                    <div class="car-contact-conten-right-one">
-                        <button><i class="ri-share-fill"></i> Chia sẻ trang</button>
-
-                    </div>
-                    <div class="car-contact-conten-right-two">
-                        <p>Kết nối với Store</p>
-
-                    </div>
-                    <div class="car-contact-conten-right-three">
-                        <div class="car-contact-conten-right-three-subset">
-                            <i class="ri-facebook-fill"></i>
-
-                        </div>
-                        <div class="car-contact-conten-right-three-subset">
-                            <i class="ri-youtube-line"></i>
-
-                        </div>
-                        <div class="car-contact-conten-right-three-subset">
-                            <i class="ri-instagram-line"></i>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
     </main>
 <!--FOOTER-->
     @include('User.parts.footer')

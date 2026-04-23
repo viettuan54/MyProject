@@ -1,19 +1,50 @@
 
 <!-- FOOTER -->
 <footer class="car-footer">
-    <div class="footer-container">
+    <div class="footer-shell">
+        <div class="footer-panel">
+            <div class="footer-brand">
+                <div class="footer-brand-head">
+                    <i class="ri-store-2-line"></i>
+                    <h3>STORECAR Viet Nam</h3>
+                </div>
+                <p>
+                    Trung tam tu van va dich vu Porsche chinh hang, dong hanh cung ban
+                    tren moi hanh trinh voi trai nghiem cao cap.
+                </p>
 
-        <div class="footer-left">
-            <i class="ri-store-line"></i>
-            <span>Store Việt Nam © 2025</span>
+                <div class="footer-social" aria-label="Mang xa hoi StoreCar">
+                    <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="ri-tiktok-line"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links-block">
+                <h4>Dieu huong nhanh</h4>
+                <a href="{{ url('/xemoi') }}">Xe moi</a>
+                <a href="{{ url('/dongxe') }}">Bang gia</a>
+                <a href="{{ url('/trungtam') }}">Trung tam</a>
+                <a href="{{ url('/dichvu') }}">Dich vu</a>
+            </div>
+
+            <div class="footer-contact-block">
+                <h4>Thong tin lien he</h4>
+                <a href="tel:0569973315"><i class="ri-phone-line"></i> 0569 973 315</a>
+                <a href="mailto:storecar54@gmail.com"><i class="ri-mail-line"></i> storecar54@gmail.com</a>
+                <p><i class="ri-map-pin-line"></i> Ha Noi - TP. Ho Chi Minh - Sai Gon</p>
+            </div>
         </div>
 
-        <div class="footer-right">
-            <a href="#">Chính sách quyền riêng tư</a>
-            <a href="#">Điều khoản sử dụng</a>
-            <a href="#">Liên hệ</a>
+        <div class="footer-bottom">
+            <p>© 2026 STORECAR Viet Nam. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Chinh sach quyen rieng tu</a>
+                <a href="#">Dieu khoan su dung</a>
+                <a href="#">Lien he</a>
+            </div>
         </div>
-
     </div>
 </footer>
 
@@ -25,7 +56,7 @@
 @include('User.parts.chatbox')
 
 <!-- Luxury Header JavaScript -->
-<script src="{{asset('frontend/asset/js/luxury-header.js')}}"></script>
+<script src="{{asset('frontend/asset/js/luxury-header.js')}}?v=20260422-1"></script>
 
 <style>
     .site-toast {
