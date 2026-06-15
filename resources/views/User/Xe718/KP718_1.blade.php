@@ -15,11 +15,18 @@
 
 
         <div class="overhead-menu">
-            <p><i class="ri-menu-line"></i></p>
-            <div class="dropdown-menu">
-                 <div class="menu-item"><a href="http://127.0.0.1:8000/">Trang chủ</a><span  style="margin-left: 196px;"><i class="ri-arrow-up-wide-line"></i></span></div>
-                <div class="menu-item"><a href="http://127.0.0.1:8000/dongxe">Về đầu trang</a><span  style="margin-left: 180px;"><i class="ri-arrow-up-wide-line"></i></span></div>
-
+            <button type="button" class="newcar-menu-button" aria-label="Mở menu">
+                <i class="ri-menu-line"></i>
+            </button>
+            <div class="newcar-dropdown-menu">
+                <a class="newcar-menu-item" href="{{ url('/') }}">
+                    <span>Trang chủ</span>
+                    <i class="ri-arrow-up-wide-line"></i>
+                </a>
+                <a class="newcar-menu-item" href="{{ url('/dongxe') }}">
+                    <span>Về đầu trang</span>
+                    <i class="ri-arrow-up-wide-line"></i>
+                </a>
             </div>
         </div>
 

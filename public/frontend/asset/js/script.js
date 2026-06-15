@@ -1,73 +1,133 @@
-const sliderItem = document.querySelectorAll('.slider-item');
-const sliderItems = document.querySelector('.slider-items');
+const slides = document.querySelectorAll('.slider-item');
 const arrowRight = document.querySelector('.ri-arrow-right-wide-line');
 const arrowLeft = document.querySelector('.ri-arrow-left-wide-line');
-const dotsContainer = document.querySelector('.slider-dots')
-let i = 0;
+const dotsContainer = document.querySelector('.slider-dots');
 
-// Đặt vị trí ban đầu cho từng slider item
-for (let index = 0; index < sliderItem.length; index++) {
-    sliderItem[index].style.left = index * 100 + "%";
-}
+let current = 0;
+let timer = null;
+const total = slides.length;
 
-// Hàm để di chuyển slider
-function sliderMove(index) {
-    sliderItems.style.left = -index * 100 + "%";
-}
+/* Setup vị trí ban đầu */
+slides.forEach((slide, i) => {
+    slide.style.left = i === 0 ? '0%' : '100%';
+    if (i === 0) slide.classList.add('active'); // Thêm class active cho slide đầu tiên
+    const v = slide.querySelector('video');
+    if (v) v.preload = "auto";
+});
 
-// Tạo các chấm 
-sliderItem.forEach((_, index) => {
+/* Tạo dots */
+slides.forEach((_, i) => {
     const dot = document.createElement('div');
-    dot.classList.add('dot');
-    if (index === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => {
-        i = index;
-        sliderMove();
-    });
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => {
+        const direction = i > current ? 'next' : 'prev';
+        goToSlide(i, direction);
+    };
     dotsContainer.appendChild(dot);
 });
+const dots = document.querySelectorAll('.dot');
 
-// Hàm cập nhật vị trí slider và chấm
-function sliderMove() {
-    sliderItems.style.left = `-${i * 100}%`;
-    updateDots();
+function updateDots() {
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
 }
 
-// Cập nhật dot đang active
-function updateDots() {
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === i);
+function clearTimer() {
+    if (timer) {
+        clearTimeout(timer);
+        timer = null;
+    }
+}
+
+/* Tối ưu hàm dừng Video: Reset hẳn về 0 để tránh lưu khung hình cũ */
+function stopAllVideos() {
+    slides.forEach(slide => {
+        const v = slide.querySelector('video');
+        if (v) {
+            v.pause();
+            v.currentTime = 0; // Đưa video về giây đầu tiên ngay lập tức
+            v.onended = null;
+            v.ontimeupdate = null;
+        }
     });
 }
 
-arrowRight.addEventListener('click', () => {
-    if (i < sliderItem.length - 1) {
-        i++;
+/* Auto control theo loại slide */
+function schedule() {
+    clearTimer();
+    stopAllVideos();
+
+    const indexLock = current;
+    const slide = slides[indexLock];
+    const video = slide.querySelector('video');
+
+    if (video) {
+        video.currentTime = 0;
+        
+        setTimeout(() => {
+            if (current !== indexLock) return;
+
+            video.play()
+                .then(() => {
+                    // Theo dõi tiến trình thời gian thực
+                    video.ontimeupdate = () => {
+                        if (video.duration && (video.currentTime >= video.duration - 0.3)) {
+                            video.ontimeupdate = null;
+                            if (current === indexLock) {
+                                goToSlide((current + 1) % total, 'next');
+                            }
+                        }
+                    };
+
+                    video.onended = () => {
+                        if (current === indexLock) {
+                            goToSlide((current + 1) % total, 'next');
+                        }
+                    };
+                })
+                .catch((err) => {
+                    // Cơ chế bảo hiểm tự nhảy nếu bị chặn phát tự động
+                    timer = setTimeout(() => {
+                        if (current === indexLock) goToSlide((current + 1) % total, 'next');
+                    }, 10000);
+                });
+        }, 100);
+
     } else {
-        i = 0;
+        timer = setTimeout(() => {
+            if (current === indexLock) {
+                goToSlide((current + 1) % total, 'next');
+            }
+        }, 13000);
     }
-    sliderMove(i);
-});
-
-
-arrowLeft.addEventListener('click', () => {
-    if (i > 0) {
-        i--;
-    } else {
-        i = sliderItem.length - 1;
-    }
-    sliderMove(i);
-});
-
-
-function autoSlider() {
-    if (i < sliderItem.length - 1) {
-        i++;
-    } else {
-        i = 0;
-    }
-    sliderMove(i);
 }
 
-setInterval(autoSlider, 9000);
+/* Di chuyển slide */
+function goToSlide(next, direction = 'next') {
+    if (next === current) return;
+
+    clearTimer();
+    
+    // Loại bỏ class active của slide cũ trước khi đổi vị trí
+    slides.forEach(slide => slide.classList.remove('active'));
+
+    // Đặt vị trí xuất phát cho slide mới và thêm class active
+    slides[next].style.left = direction === 'next' ? '100%' : '-100%';
+    slides[next].classList.add('active');
+    slides[next].offsetHeight; // Force reflow
+
+    requestAnimationFrame(() => {
+        slides[current].style.left = direction === 'next' ? '-100%' : '100%';
+        slides[next].style.left = '0%';
+    });
+
+    current = next;
+    updateDots();
+    schedule();
+}
+
+/* Arrow */
+arrowRight.onclick = () => goToSlide((current + 1) % total, 'next');
+arrowLeft.onclick  = () => goToSlide((current - 1 + total) % total, 'prev');
+
+/* Khởi động */
+schedule();

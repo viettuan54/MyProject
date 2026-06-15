@@ -567,22 +567,34 @@ body.login #toast-success {
     position: relative;
 }
 
-.slider-items {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    transition: all 0.3s ease;
-
-}
-
 .slider-item {
     position: absolute;
     top: 0;
     width: 100%;
     height: 100%;
-
+    transition: left 0.6s ease-in-out, visibility 0.6s step-end; /* Thêm hiệu ứng ẩn hẳn khi trượt xong */
+    will-change: left;
+    z-index: 1;             /* Mặc định các slide ẩn có z-index thấp */
+    visibility: hidden;     /* Ẩn hoàn toàn để không đè lên luồng hiển thị */
 }
+
+/* Khi slide có class .active (đang hiển thị hoặc đang trong quá trình trượt) */
+.slider-item.active {
+    z-index: 2;             /* Đưa slide active lên trên cùng */
+    visibility: visible;    /* Hiện slide ra */
+    transition: left 0.6s ease-in-out, visibility 0s step-start;
+}
+
+.slider-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background-color: black; /* Tạo nền đen bổ trợ trong lúc video load lại */
+}
+
+
+
 
 .slider-item img {
     width: 100%;
@@ -633,6 +645,12 @@ body.login #toast-success {
 .slider-arrow i:first-child {
     right: 5px;
 }
+.slider-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
 /* Tao cac cham duoi slider */
 .slider-dots {
@@ -659,7 +677,77 @@ body.login #toast-success {
 .slider-dots .dot.active {
     background-color: white;
 }
+/* --- BỐ CỤC CHUNG CHO NỘI DUNG --- */
+.slider-content {
+    position: absolute; /* Đặt tuyệt đối trên slide */
+    top: 70%;           /* Căn giữa dọc */
+    left: 10%;          /* Căn lề trái 10% chiều rộng slide (như hình) */
+    transform: translateY(-50%); /* Hoàn tất căn giữa dọc */
+    z-index: 5;         /* Nằm trên video/ảnh */
+    color: white;       /* Màu chữ mặc định */
+    font-family: Arial, sans-serif; /* Hoặc font bạn đang dùng */
+}
 
+.slider-content h3.sub-title {
+    font-size: 1.2rem;   /* Kích thước tiêu đề phụ */
+    font-weight: 300;     /* Mỏng hơn */
+    margin-bottom: 10px;
+    letter-spacing: 2px; /* Khoảng cách chữ (như hình) */
+}
+
+.slider-content h1.main-title {
+    font-size: 3rem;      /* Kích thước tiêu đề chính (lớn) */
+    font-weight: 700;
+    margin-bottom: 25px;
+    line-height: 1.1;     /* Khoảng cách dòng hẹp (như hình) */
+}
+
+.slider-content .btn-discover {
+    display: inline-flex;  /* Cho phép icon nằm cùng hàng */
+    align-items: center;  /* Căn giữa icon và chữ */
+    background-color: #ff9800; /* Màu nền vàng/cam (như hình) */
+    color: #111;         /* Màu chữ đậm */
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease; /* Hiệu ứng hover cho nút */
+}
+
+.slider-content .btn-discover:hover {
+    background-color: #e68a00; /* Màu đậm hơn khi hover */
+}
+
+
+/* --- HIỆU ỨNG XUẤT HIỆN KHI ACTIVE --- */
+
+/* Trạng thái mặc định: Ẩn và Lệch */
+.slider-content h3.sub-title,
+.slider-content h1.main-title,
+.slider-content .btn-discover {
+    opacity: 0;           /* Mờ đi */
+    transform: translateY(20px); /* Lệch xuống 20px */
+    transition: all 0.5s ease; /* Thời gian diễn ra animation (như hình có vẻ khá nhanh) */
+}
+
+/* Kích hoạt animation khi Slide Active: Hiện ra và Di chuyển lên */
+.slider-item.active .slider-content h3.sub-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s; /* Tiêu đề phụ xuất hiện đầu tiên */
+}
+
+.slider-item.active .slider-content h1.main-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s; /* Tiêu đề chính xuất hiện sau */
+}
+
+.slider-item.active .slider-content .btn-discover {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s; /* Nút xuất hiện cuối cùng */
+}
 /*container*/
 .content p {
     font-family: 'Arial Narrow';

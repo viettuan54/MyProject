@@ -175,6 +175,17 @@
             color: #ffffff !important;
             transform: translateX(3px) !important;
         }
+
+        /* Tăng kích thước logo và thu hẹp khoảng cách trên dưới của Header Main */
+        .luxury-header .header-logo-center img {
+            width: 150px !important; /* Bạn có thể tăng/giảm con số này để vừa ý */
+            height: auto !important;
+        }
+
+        .luxury-header .header-main {
+            padding-top: 0px !important; /* Giảm khoảng cách đệm phía trên */
+            padding-bottom: 0px !important; /* Giảm khoảng cách đệm phía dưới */
+        }
     </style>
 <title>
     @hasSection('title')

@@ -28,15 +28,18 @@
 
             {{-- AVATAR --}}
             <div class="profile-avatar">
-                @if(Auth::user()->avatar)
-                    <img src="{{ asset('storage/avatars/' . Auth::user()->avatar) }}">
-                @else
-                    <i class="fa-solid fa-user"></i>
-                @endif
+                <img
+                    id="avatar-preview"
+                    src="{{ Auth::user()->avatar ? asset('storage/avatars/' . Auth::user()->avatar) : '' }}"
+                    alt="Avatar"
+                    data-initial-src="{{ Auth::user()->avatar ? asset('storage/avatars/' . Auth::user()->avatar) : '' }}"
+                    @if(!Auth::user()->avatar) style="display: none;" @endif
+                >
+                <i id="avatar-placeholder" class="fa-solid fa-user" @if(Auth::user()->avatar) style="display: none;" @endif></i>
             </div>
 
             <div class="auth-group">
-                <input type="file" name="avatar">
+                <input type="file" name="avatar" id="avatar-input" accept="image/*">
             </div>
 
             {{-- NAME --}}
@@ -86,6 +89,44 @@
 
     </section>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const fileInput = document.getElementById('avatar-input');
+        const avatarImg = document.getElementById('avatar-preview');
+        const avatarIcon = document.getElementById('avatar-placeholder');
+
+        if (!fileInput || !avatarImg || !avatarIcon) {
+            return;
+        }
+
+        const initialSrc = avatarImg.dataset.initialSrc;
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files && fileInput.files[0];
+
+            if (!file) {
+                if (initialSrc) {
+                    avatarImg.src = initialSrc;
+                    avatarImg.style.display = 'block';
+                    avatarIcon.style.display = 'none';
+                } else {
+                    avatarImg.style.display = 'none';
+                    avatarIcon.style.display = 'flex';
+                }
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                avatarImg.src = event.target.result;
+                avatarImg.style.display = 'block';
+                avatarIcon.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+</script>
 
 </body>
 </html>

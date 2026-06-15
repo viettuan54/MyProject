@@ -9,39 +9,52 @@
     <!--header-->
     @include('User.parts.header')
     <!--slider-->
-    <section class="slider">
-        <div class="slider-items">
-            <div class="slider-item">
-                <img src="{{asset('frontend/asset/images/slider1.jpg')}}" alt="">
-            </div>
-            <div class="slider-item">
-                <img src="{{asset('frontend/asset/images/slider2.jpg')}}" alt="">
+   <section class="slider">
+    <div class="slider-items">
 
-            </div>
-            <div class="slider-item">
-                <img src="{{asset('frontend/asset/images/slider3.jpg')}}" alt="">
-
-            </div>
-            <div class="slider-item">
-                <img src="{{asset('frontend/asset/images/slider4.jpg')}}" alt="">
-
-            </div>
-            <div class="slider-item">
-                <img src="{{asset('frontend/asset/images/slider5.jpg')}}" alt="">
-
-            </div>
-            <div class="slider-item">
-                <img src="{{asset('frontend/asset/images/slider6.jpg')}}" alt="">
-
-            </div>
+        <!-- Slide 1: Video -->
+        <div class="slider-item">
+            <video muted playsinline preload="auto">
+                <source src="{{ asset('frontend/asset/images/videolambo.mp4') }}" type="video/mp4">
+            </video>
+            <div class="slider-content">
+        <h3 class="sub-title">SINH RA TỪ ĐAM MÊ. TẠO NÊN CHO TỐC ĐỘ.</h3>
+        <h1 class="main-title">LAMBORGHINI</h1>
+        <a href="#" class="btn-discover">MỞ KHÓA SỨC MẠNH →</a>
+    </div>
         </div>
-        <div class="slider-arrow">
-            <i class="ri-arrow-right-wide-line"></i>
-            <i class="ri-arrow-left-wide-line"></i>
+
+        <!-- Slide 2: Image -->
+        <div class="slider-item">
+            <img src="{{ asset('frontend/asset/images/slider3.jpg') }}" alt="">
+            <div class="slider-content">
+        <h3 class="sub-title">KIẾN TẠO TƯƠNG LAI TỪ NĂM 1963</h3>
+        <h1 class="main-title">THEO ĐUỔI GIẤC MƠ</h1>
+        <a href="#" class="btn-discover">KHÁM PHÁ NGAY →</a>
+    </div>
         </div>
-        <!---Tao cac cham duoi slider-->
-        <div class="slider-dots"></div>
-    </section>
+
+        <!-- Slide 3: Video -->
+        <div class="slider-item">
+            <video muted playsinline preload="auto">
+                <source src="{{ asset('frontend/asset/images/videoporche.mp4') }}" type="video/mp4">
+            </video>
+            <div class="slider-content">
+        <h3 class="sub-title">TỐI ƯU CHO MỌI ĐIỀU KIỆN VẬN HÀNH</h3>
+        <h1 class="main-title">TINH HOA KỸ THUẬT ĐỨC</h1>
+        <a href="#" class="btn-discover">KHÁM PHÁ PORSCHE →</a>
+    </div>
+        </div>
+
+    </div>
+
+    <div class="slider-arrow">
+        <i class="ri-arrow-right-wide-line"></i>
+        <i class="ri-arrow-left-wide-line"></i>
+    </div>
+
+    <div class="slider-dots"></div>
+</section>
     <main>
         <!--containre-->
         <section class="content">

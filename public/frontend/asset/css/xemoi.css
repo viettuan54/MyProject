@@ -4,14 +4,14 @@
 .newcar-overhead {
     width: 100%;
     height: 140px;
-    background: linear-gradient(90deg, #f5f5f5, #eaeaea);
+    background: linear-gradient(90deg, #f5f5f5, #b45151);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .overhead-text p {
-    margin-left: 180px;
+    margin-left: 0;
     font-family: 'Arial Narrow', sans-serif;
     font-size: 22px;
     color: #333;
@@ -20,7 +20,7 @@
 
 /* MENU */
 .overhead-menu {
-    margin-left: 180px;
+    margin-left: 0;
     position: relative;
     width: fit-content;
     margin-top: 20px;
@@ -41,7 +41,7 @@
 }
 
 /* DROPDOWN */
-.dropdown-menu {
+.newcar-old-dropdown-menu {
     display: none;
     position: absolute;
     top: 36px;
@@ -54,11 +54,11 @@
     z-index: 1000;
 }
 
-.overhead-menu:hover .dropdown-menu {
+.overhead-menu:hover .newcar-old-dropdown-menu {
     display: block;
 }
 
-.menu-item {
+.newcar-old-menu-item {
     font-size: 16px;
     font-family: 'Arial Narrow', sans-serif;
     padding: 14px 18px;
@@ -70,16 +70,16 @@
     transition: background 0.3s ease;
 }
 
-.menu-item:last-child {
+.newcar-old-menu-item:last-child {
     border-bottom: none;
 }
 
-.menu-item:hover {
+.newcar-old-menu-item:hover {
     background-color: #9e0505;
     cursor: pointer;
 }
 
-.menu-item span {
+.newcar-old-menu-item span {
     font-size: 14px;
     opacity: 0.8;
 }
@@ -93,30 +93,33 @@
 
 /* layout */
 .newcar-content {
+    position: relative;
     display: flex;
     gap: 80px;
     align-items: flex-start;
-}
-
-/* LEFT IMAGES */
-.newcar-content-one-top img,
-.newcar-content-one-bottum img {
-    width: 300px;
-    height: 190px;
-    object-fit: cover;
+    padding: 34px;
     border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    background-image:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.5) 48%, rgba(0, 0, 0, 0.25)),
+        var(--product-bg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
 }
 
-.newcar-content-one-top img:hover,
-.newcar-content-one-bottum img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+.newcar-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.12);
+    pointer-events: none;
 }
 
-.newcar-content-one-bottum img {
-    margin-top: 20px;
+.newcar-content-one,
+.newcar-content-two {
+    position: relative;
+    z-index: 1;
 }
 
 /* RIGHT INFO */
@@ -129,7 +132,7 @@
     width: 100%;
     border: none;
     height: 1px;
-    background-color: #ddd;
+    background-color: rgba(255, 255, 255, 0.28);
     margin: 15px 0;
 }
 
@@ -137,7 +140,8 @@
     font-size: 17px;
     font-family: 'Arial Narrow', sans-serif;
     padding: 8px 0;
-    color: #333;
+    color: #f7f7f7;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .newcar-content-two ul li i {
@@ -151,7 +155,7 @@
 }
 
 .newcar-content-two ul li:first-child:hover {
-    color: #9e0505;
+    color: #ffffff;
     cursor: pointer;
 }
 
@@ -159,7 +163,7 @@
 .newcar-content-two-show button {
     height: 48px;
     width: 150px;
-    background-color: #333;
+    background-color: rgba(158, 5, 5, 0.95);
     color: white;
     font-size: 16px;
     font-family: 'Arial Narrow', sans-serif;
@@ -170,6 +174,276 @@
 }
 
 .newcar-content-two-show button:hover {
-    background-color: #9e0505;
+    background-color: #333;
     cursor: pointer;
+}
+
+/* ================= XEMOI RESPONSIVE REWORK ================= */
+.newcar-overhead {
+    min-height: 140px;
+    height: auto;
+    padding: 24px clamp(20px, 8vw, 180px);
+}
+
+.overhead-text p,
+.overhead-menu {
+    margin-left: 0;
+}
+
+.overhead-text p {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.overhead-menu {
+    margin-top: 0;
+}
+
+.newcar-menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 48px;
+    background-color: #9e0505;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    font-size: 22px;
+    transition: background-color 0.25s ease;
+}
+
+.newcar-menu-button:hover,
+.newcar-menu-button:focus-visible {
+    background-color: #333;
+    cursor: pointer;
+    outline: none;
+}
+
+.newcar-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 300px;
+    background-color: #333;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.overhead-menu:hover .newcar-dropdown-menu,
+.overhead-menu:focus-within .newcar-dropdown-menu {
+    display: block;
+}
+
+.newcar-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 14px 18px;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #555;
+    font-size: 16px;
+    font-family: 'Arial Narrow', sans-serif;
+    transition: background-color 0.25s ease;
+}
+
+.newcar-menu-item:last-child {
+    border-bottom: none;
+}
+
+.newcar-menu-item:hover,
+.newcar-menu-item:focus-visible {
+    background-color: #9e0505;
+    color: #fff;
+    outline: none;
+}
+
+.newcar-page {
+    width: min(1200px, calc(100% - 40px));
+    margin: 70px auto;
+}
+
+.newcar-contents {
+    max-width: none;
+    margin: 0;
+}
+
+.newcar-contents + .newcar-contents {
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid #ddd;
+}
+
+.newcar-content {
+    display: grid;
+    grid-template-columns: minmax(340px, 430px) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 48px);
+    padding: clamp(22px, 4vw, 36px);
+}
+
+.newcar-content-one {
+    display: grid;
+    gap: 20px;
+}
+
+.newcar-content-one img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 230px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.newcar-content-one img:hover {
+    transform: scale(1.025);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+}
+
+.newcar-content-two {
+    min-width: 0;
+}
+
+.newcar-content-two h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 18px;
+    color: #fff;
+    font-family: 'Arial Narrow', sans-serif;
+    font-size: clamp(24px, 3vw, 30px);
+    line-height: 1.2;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.newcar-content-two h2 i {
+    color: #d40b0b;
+    font-size: 24px;
+    flex: 0 0 auto;
+}
+
+.newcar-specs {
+    margin: 0;
+    color: #f7f7f7;
+    font-family: 'Arial Narrow', sans-serif;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.newcar-spec-row {
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) minmax(130px, auto);
+    gap: 20px;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.newcar-spec-row dt,
+.newcar-spec-row dd {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.35;
+}
+
+.newcar-spec-row dd {
+    text-align: right;
+    font-weight: 600;
+}
+
+.newcar-spec-row.is-price {
+    border-bottom: none;
+}
+
+.newcar-spec-row.is-price dd {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.newcar-content-two-show button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 48px;
+    min-width: 150px;
+    width: auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 900px) {
+    .newcar-content {
+        grid-template-columns: 1fr;
+    }
+
+    .newcar-content-one {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .newcar-content-one img {
+        min-height: 190px;
+    }
+}
+
+@media (max-width: 640px) {
+    .newcar-overhead {
+        min-height: 120px;
+        padding: 22px 20px;
+    }
+
+    .newcar-dropdown-menu {
+        min-width: min(300px, calc(100vw - 40px));
+    }
+
+    .newcar-page {
+        width: calc(100% - 28px);
+        margin: 42px auto;
+    }
+
+    .newcar-contents + .newcar-contents {
+        margin-top: 34px;
+        padding-top: 34px;
+    }
+
+    .newcar-content {
+        padding: 18px;
+        background-image:
+            linear-gradient(180deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.68)),
+            var(--product-bg);
+    }
+
+    .newcar-content-one {
+        gap: 12px;
+    }
+
+    .newcar-content-one img {
+        min-height: 150px;
+    }
+
+    .newcar-content-two h2 {
+        font-size: 23px;
+    }
+
+    .newcar-spec-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 10px 0;
+    }
+
+    .newcar-spec-row dd {
+        text-align: left;
+    }
+
+    .newcar-content-two-show button {
+        width: 100%;
+    }
 }
