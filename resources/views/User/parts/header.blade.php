@@ -54,21 +54,17 @@
                     </div>
                 </div>
                 
-                @php
-                    $cartCount = collect(session('cart', []))->sum('quantity');
-                @endphp
-
                 <!-- Cart -->
                 <a href="{{ url('/cart') }}" class="topbar-icon cart-icon">
                     <i class="ri-shopping-cart-2-line"></i>
-                    <span class="cart-badge">{{ $cartCount }}</span>
+                    <span class="cart-badge">{{ collect(session('cart', []))->sum('quantity') }}</span>
                 </a>
                 
                 <!-- User -->
                 <div class="header-user-menu">
                     @auth
-                        @if(Auth::user()->avatar)
-                            <img src="{{ asset('storage/avatars/' . Auth::user()->avatar) }}" 
+                        @if(Auth::user()->avatar && file_exists(public_path('storage/avatars/' . Auth::user()->avatar)))
+                            <img src="{{ asset('storage/avatars/' . Auth::user()->avatar) }}"
                                  alt="User" class="user-avatar-top">
                         @else
                             <div class="user-icon-top">
@@ -141,40 +137,264 @@
             <nav class="header-nav">
                 <ul class="nav-menu">
                     <!-- Các dòng xe -->
-                    <li class="nav-item has-dropdown has-images">
+                    <li class="nav-item has-mega-menu">
                         <a href="{{ url('/dongxe') }}" class="nav-link">Các dòng xe</a>
-                        <div class="dropdown-menu dropdown-with-images car-models-dropdown">
-                            <a href="{{ url('/dongxe718') }}" class="dropdown-link car-model-item">
-                                <span class="car-name">718</span>
-                                <img src="{{asset('frontend/asset/images/submenu-1.png')}}" alt="718" class="car-image">
-                                <i class="ri-arrow-right-s-line car-arrow"></i>
-                            </a>
-                            <a href="{{ url('/dongxe911') }}" class="dropdown-link car-model-item">
-                                <span class="car-name">911</span>
-                                <img src="{{asset('frontend/asset/images/submenu-2.png')}}" alt="911" class="car-image">
-                                <i class="ri-arrow-right-s-line car-arrow"></i>
-                            </a>
-                            <a href="{{ url('/dongxetaycan') }}" class="dropdown-link car-model-item">
-                                <span class="car-name">Taycan</span>
-                                <img src="{{asset('frontend/asset/images/submenu-3.png')}}" alt="Taycan" class="car-image">
-                                <i class="ri-arrow-right-s-line car-arrow"></i>
-                            </a>
-                            <a href="{{ url('/dongxepana') }}" class="dropdown-link car-model-item">
-                                <span class="car-name">Panamera</span>
-                                <img src="{{asset('frontend/asset/images/submenu-4.png')}}" alt="Panamera" class="car-image">
-                                <i class="ri-arrow-right-s-line car-arrow"></i>
-                            </a>
-                            <a href="{{ url('/dongxemacan') }}" class="dropdown-link car-model-item">
-                                <span class="car-name">Macan</span>
-                                <img src="{{asset('frontend/asset/images/submenu-5.png')}}" alt="Macan" class="car-image">
-                                <i class="ri-arrow-right-s-line car-arrow"></i>
-                            </a>
-                            <a href="{{ url('/dongxecayne') }}" class="dropdown-link car-model-item">
-                                <span class="car-name">Cayenne</span>
-                                <img src="{{asset('frontend/asset/images/submenu-6.png')}}" alt="Cayenne" class="car-image">
-                                <i class="ri-arrow-right-s-line car-arrow"></i>
-                            </a>
-                        </div>
+                        <div class="car-models-mega-menu">
+                            <div class="car-mega-menu-container">
+
+                                <!-- ===== CỘT 1: SIDEBAR DANH SÁCH DÒNG XE ===== -->
+                                <div class="car-sidebar">
+                                    <a href="{{ url('/dongxe718') }}" class="car-sidebar-item active" data-car="718" style="text-decoration: none;">
+                                        <span class="car-sidebar-name">718</span>
+                                        <img src="{{asset('frontend/asset/images/submenu-1.png')}}" alt="718" class="car-sidebar-thumb">
+                                        <i class="ri-arrow-right-s-line car-sidebar-arrow"></i>
+                                    </a>
+                                    <a href="{{ url('/dongxe911') }}" class="car-sidebar-item" data-car="911" style="text-decoration: none;">
+                                        <span class="car-sidebar-name">911</span>
+                                        <img src="{{asset('frontend/asset/images/submenu-2.png')}}" alt="911" class="car-sidebar-thumb">
+                                        <i class="ri-arrow-right-s-line car-sidebar-arrow"></i>
+                                    </a>
+                                    <a href="{{ url('/dongxetaycan') }}" class="car-sidebar-item" data-car="taycan" style="text-decoration: none;">
+                                        <span class="car-sidebar-name">Taycan</span>
+                                        <img src="{{asset('frontend/asset/images/submenu-3.png')}}" alt="Taycan" class="car-sidebar-thumb">
+                                        <i class="ri-arrow-right-s-line car-sidebar-arrow"></i>
+                                    </a>
+                                    <a href="{{ url('/dongxepana') }}" class="car-sidebar-item" data-car="panamera" style="text-decoration: none;">
+                                        <span class="car-sidebar-name">Panamera</span>
+                                        <img src="{{asset('frontend/asset/images/submenu-4.png')}}" alt="Panamera" class="car-sidebar-thumb">
+                                        <i class="ri-arrow-right-s-line car-sidebar-arrow"></i>
+                                    </a>
+                                    <a href="{{ url('/dongxemacan') }}" class="car-sidebar-item" data-car="macan" style="text-decoration: none;">
+                                        <span class="car-sidebar-name">Macan</span>
+                                        <img src="{{asset('frontend/asset/images/submenu-5.png')}}" alt="Macan" class="car-sidebar-thumb">
+                                        <i class="ri-arrow-right-s-line car-sidebar-arrow"></i>
+                                    </a>
+                                    <a href="{{ url('/dongxecayne') }}" class="car-sidebar-item" data-car="cayenne" style="text-decoration: none;">
+                                        <span class="car-sidebar-name">Cayenne</span>
+                                        <img src="{{asset('frontend/asset/images/submenu-6.png')}}" alt="Cayenne" class="car-sidebar-thumb">
+                                        <i class="ri-arrow-right-s-line car-sidebar-arrow"></i>
+                                    </a>
+                                </div>
+
+                                <!-- ===== CỘT 2: DANH SÁCH PHIÊN BẢN ===== -->
+                                <div class="car-versions-column">
+                                    <!-- 718 Versions -->
+                                    <div class="car-versions-pane active" data-car="718">
+                                        <a href="{{ url('/dongxe718') }}" class="version-link"><span>Phiên bản 718 Cayman</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxe718') }}" class="version-link"><span>Phiên bản 718 Boxster</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxe718') }}" class="version-link"><span>Phiên bản 718 Style Edition</span><i class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                    <!-- 911 Versions -->
+                                    <div class="car-versions-pane" data-car="911">
+                                        <a href="{{ url('/dongxe911') }}" class="version-link"><span>911 Carrera</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxe911') }}" class="version-link"><span>911 Carrera S</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxe911') }}" class="version-link"><span>911 Targa 4</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxe911') }}" class="version-link"><span>911 GT3</span><i class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                    <!-- Taycan Versions -->
+                                    <div class="car-versions-pane" data-car="taycan">
+                                        <a href="{{ url('/dongxetaycan') }}" class="version-link"><span>Taycan</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxetaycan') }}" class="version-link"><span>Taycan 4S</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxetaycan') }}" class="version-link"><span>Taycan Turbo</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxetaycan') }}" class="version-link"><span>Taycan Cross Turismo</span><i class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                    <!-- Panamera Versions -->
+                                    <div class="car-versions-pane" data-car="panamera">
+                                        <a href="{{ url('/dongxepana') }}" class="version-link"><span>Panamera</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxepana') }}" class="version-link"><span>Panamera 4</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxepana') }}" class="version-link"><span>Panamera Turbo S</span><i class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                    <!-- Macan Versions -->
+                                    <div class="car-versions-pane" data-car="macan">
+                                        <a href="{{ url('/dongxemacan') }}" class="version-link"><span>Macan</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxemacan') }}" class="version-link"><span>Macan S</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxemacan') }}" class="version-link"><span>Macan GTS</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxemacan') }}" class="version-link"><span>Macan Turbo</span><i class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                    <!-- Cayenne Versions -->
+                                    <div class="car-versions-pane" data-car="cayenne">
+                                        <a href="{{ url('/dongxecayne') }}" class="version-link"><span>Cayenne</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxecayne') }}" class="version-link"><span>Cayenne S</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxecayne') }}" class="version-link"><span>Cayenne GTS</span><i class="ri-arrow-right-s-line"></i></a>
+                                        <a href="{{ url('/dongxecayne') }}" class="version-link"><span>Cayenne Turbo</span><i class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                </div>
+
+                                <!-- ===== CỘT 3: PREVIEW + THÔNG SỐ KỸ THUẬT ===== -->
+                                <div class="car-preview-column">
+                                    <!-- 718 Preview -->
+                                    <div class="car-preview-pane active" data-car="718">
+                                        <div class="preview-media-container">
+                                            <img src="{{asset('frontend/asset/images/submenu-1.png')}}" alt="718" class="preview-car-img">
+                                        </div>
+                                        <div class="preview-specs-container">
+                                            <div class="spec-grid">
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Giá từ 3.850.000.000 VNĐ*</span>
+                                                    <span class="spec-label">Giá tiêu chuẩn</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Từ 300 PS / 220 kW</span>
+                                                    <span class="spec-label">Công suất (PS)/Công suất (kW)</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">4,7 giây</span>
+                                                    <span class="spec-label">Tăng tốc 0 – 100 km/giờ</span>
+                                                </div>
+                                            </div>
+                                            <div class="spec-cta">
+                                                <a href="{{ url('/dongxe718') }}" class="preview-explore-btn">
+                                                    <i class="ri-arrow-right-line"></i> Khám phá
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="preview-footnote">*Giá tiêu chuẩn bao gồm thuế nhập khẩu, thuế tiêu thụ đặc biệt và thuế giá trị gia tăng. Bằng giá, thông số kỹ thuật và hình ảnh có thể thay đổi theo từng thời điểm mà không báo trước.</p>
+                                    </div>
+                                    <!-- 911 Preview -->
+                                    <div class="car-preview-pane" data-car="911">
+                                        <div class="preview-media-container">
+                                            <img src="{{asset('frontend/asset/images/submenu-2.png')}}" alt="911" class="preview-car-img">
+                                        </div>
+                                        <div class="preview-specs-container">
+                                            <div class="spec-grid">
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Giá từ 7.500.000.000 VNĐ*</span>
+                                                    <span class="spec-label">Giá tiêu chuẩn</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Từ 385 PS / 283 kW</span>
+                                                    <span class="spec-label">Công suất (PS)/Công suất (kW)</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">4,2 giây</span>
+                                                    <span class="spec-label">Tăng tốc 0 – 100 km/giờ</span>
+                                                </div>
+                                            </div>
+                                            <div class="spec-cta">
+                                                <a href="{{ url('/dongxe911') }}" class="preview-explore-btn">
+                                                    <i class="ri-arrow-right-line"></i> Khám phá
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="preview-footnote">*Giá tiêu chuẩn bao gồm thuế nhập khẩu, thuế tiêu thụ đặc biệt và thuế giá trị gia tăng. Bằng giá, thông số kỹ thuật và hình ảnh có thể thay đổi theo từng thời điểm mà không báo trước.</p>
+                                    </div>
+                                    <!-- Taycan Preview -->
+                                    <div class="car-preview-pane" data-car="taycan">
+                                        <div class="preview-media-container">
+                                            <img src="{{asset('frontend/asset/images/submenu-3.png')}}" alt="Taycan" class="preview-car-img">
+                                        </div>
+                                        <div class="preview-specs-container">
+                                            <div class="spec-grid">
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Giá từ 5.200.000.000 VNĐ*</span>
+                                                    <span class="spec-label">Giá tiêu chuẩn</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Từ 408 PS / 300 kW</span>
+                                                    <span class="spec-label">Công suất (PS)/Công suất (kW)</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">5,4 giây</span>
+                                                    <span class="spec-label">Tăng tốc 0 – 100 km/giờ</span>
+                                                </div>
+                                            </div>
+                                            <div class="spec-cta">
+                                                <a href="{{ url('/dongxetaycan') }}" class="preview-explore-btn">
+                                                    <i class="ri-arrow-right-line"></i> Khám phá
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="preview-footnote">*Giá tiêu chuẩn bao gồm thuế nhập khẩu, thuế tiêu thụ đặc biệt và thuế giá trị gia tăng. Bằng giá, thông số kỹ thuật và hình ảnh có thể thay đổi theo từng thời điểm mà không báo trước.</p>
+                                    </div>
+                                    <!-- Panamera Preview -->
+                                    <div class="car-preview-pane" data-car="panamera">
+                                        <div class="preview-media-container">
+                                            <img src="{{asset('frontend/asset/images/submenu-4.png')}}" alt="Panamera" class="preview-car-img">
+                                        </div>
+                                        <div class="preview-specs-container">
+                                            <div class="spec-grid">
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Giá từ 6.000.000.000 VNĐ*</span>
+                                                    <span class="spec-label">Giá tiêu chuẩn</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Từ 330 PS / 243 kW</span>
+                                                    <span class="spec-label">Công suất (PS)/Công suất (kW)</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">5,3 giây</span>
+                                                    <span class="spec-label">Tăng tốc 0 – 100 km/giờ</span>
+                                                </div>
+                                            </div>
+                                            <div class="spec-cta">
+                                                <a href="{{ url('/dongxepana') }}" class="preview-explore-btn">
+                                                    <i class="ri-arrow-right-line"></i> Khám phá
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="preview-footnote">*Giá tiêu chuẩn bao gồm thuế nhập khẩu, thuế tiêu thụ đặc biệt và thuế giá trị gia tăng. Bằng giá, thông số kỹ thuật và hình ảnh có thể thay đổi theo từng thời điểm mà không báo trước.</p>
+                                    </div>
+                                    <!-- Macan Preview -->
+                                    <div class="car-preview-pane" data-car="macan">
+                                        <div class="preview-media-container">
+                                            <img src="{{asset('frontend/asset/images/submenu-5.png')}}" alt="Macan" class="preview-car-img">
+                                        </div>
+                                        <div class="preview-specs-container">
+                                            <div class="spec-grid">
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Giá từ 3.200.000.000 VNĐ*</span>
+                                                    <span class="spec-label">Giá tiêu chuẩn</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Từ 265 PS / 195 kW</span>
+                                                    <span class="spec-label">Công suất (PS)/Công suất (kW)</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">6,5 giây</span>
+                                                    <span class="spec-label">Tăng tốc 0 – 100 km/giờ</span>
+                                                </div>
+                                            </div>
+                                            <div class="spec-cta">
+                                                <a href="{{ url('/dongxemacan') }}" class="preview-explore-btn">
+                                                    <i class="ri-arrow-right-line"></i> Khám phá
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="preview-footnote">*Giá tiêu chuẩn bao gồm thuế nhập khẩu, thuế tiêu thụ đặc biệt và thuế giá trị gia tăng. Bằng giá, thông số kỹ thuật và hình ảnh có thể thay đổi theo từng thời điểm mà không báo trước.</p>
+                                    </div>
+                                    <!-- Cayenne Preview -->
+                                    <div class="car-preview-pane" data-car="cayenne">
+                                        <div class="preview-media-container">
+                                            <img src="{{asset('frontend/asset/images/submenu-6.png')}}" alt="Cayenne" class="preview-car-img">
+                                        </div>
+                                        <div class="preview-specs-container">
+                                            <div class="spec-grid">
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Giá từ 5.400.000.000 VNĐ*</span>
+                                                    <span class="spec-label">Giá tiêu chuẩn</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">Từ 340 PS / 250 kW</span>
+                                                    <span class="spec-label">Công suất (PS)/Công suất (kW)</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <span class="spec-value">5,9 giây</span>
+                                                    <span class="spec-label">Tăng tốc 0 – 100 km/giờ</span>
+                                                </div>
+                                            </div>
+                                            <div class="spec-cta">
+                                                <a href="{{ url('/dongxecayne') }}" class="preview-explore-btn">
+                                                    <i class="ri-arrow-right-line"></i> Khám phá
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="preview-footnote">*Giá tiêu chuẩn bao gồm thuế nhập khẩu, thuế tiêu thụ đặc biệt và thuế giá trị gia tăng. Bằng giá, thông số kỹ thuật và hình ảnh có thể thay đổi theo từng thời điểm mà không báo trước.</p>
+                                    </div>
+                                </div>
+                                <!-- end car-preview-column -->
+
+                            </div><!-- end car-mega-menu-container -->
+                        </div><!-- end car-models-mega-menu -->
                     </li>
 
                     <!-- Xe mới -->

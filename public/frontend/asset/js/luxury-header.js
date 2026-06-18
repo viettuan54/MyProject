@@ -382,7 +382,71 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ================================================
+    // CAR MODELS MEGA MENU INTERACTIVE TABS
+    // ================================================
+    const carSidebarItems = document.querySelectorAll('.car-sidebar-item');
+    const carVersionsPanes = document.querySelectorAll('.car-versions-pane');
+    const carPreviewPanes = document.querySelectorAll('.car-preview-pane');
+
+    if (carSidebarItems.length > 0) {
+        carSidebarItems.forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                const targetCar = this.getAttribute('data-car');
+
+                // 1. Update active class on sidebar items
+                carSidebarItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+
+                // 2. Update active class on versions panes
+                carVersionsPanes.forEach(pane => {
+                    if (pane.getAttribute('data-car') === targetCar) {
+                        pane.classList.add('active');
+                    } else {
+                        pane.classList.remove('active');
+                    }
+                });
+
+                // 3. Update active class on preview panes
+                carPreviewPanes.forEach(pane => {
+                    if (pane.getAttribute('data-car') === targetCar) {
+                        pane.classList.add('active');
+                    } else {
+                        pane.classList.remove('active');
+                    }
+                });
+            });
+        });
+    }
+
     console.log('✅ Luxury Header initialized');
+
+    // ================================================
+    // CAR MODELS MEGA MENU — HOVER WITH DELAY
+    // (Cần thiết vì nav-item là position:static, hover CSS không đủ)
+    // ================================================
+    const carMegaNavItem = document.querySelector('.nav-item.has-mega-menu');
+    const carMegaMenuEl = document.querySelector('.car-models-mega-menu');
+    let megaCloseTimer = null;
+
+    function openMegaMenu() {
+        clearTimeout(megaCloseTimer);
+        if (carMegaNavItem) carMegaNavItem.classList.add('mega-open');
+    }
+
+    function closeMegaMenu(delay = 180) {
+        clearTimeout(megaCloseTimer);
+        megaCloseTimer = setTimeout(() => {
+            if (carMegaNavItem) carMegaNavItem.classList.remove('mega-open');
+        }, delay);
+    }
+
+    if (carMegaNavItem && carMegaMenuEl) {
+        carMegaNavItem.addEventListener('mouseenter', openMegaMenu);
+        carMegaNavItem.addEventListener('mouseleave', () => closeMegaMenu(180));
+        carMegaMenuEl.addEventListener('mouseenter', openMegaMenu);
+        carMegaMenuEl.addEventListener('mouseleave', () => closeMegaMenu(180));
+    }
 
     // Debug: Log dropdown elements
     const dropdownItems = document.querySelectorAll('.has-dropdown');
