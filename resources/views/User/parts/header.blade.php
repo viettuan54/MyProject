@@ -225,6 +225,7 @@
                                     <!-- 718 Preview -->
                                     <div class="car-preview-pane active" data-car="718">
                                         <div class="preview-media-container">
+                                         
                                             <img src="{{asset('frontend/asset/images/submenu-1.png')}}" alt="718" class="preview-car-img">
                                         </div>
                                         <div class="preview-specs-container">
@@ -253,6 +254,7 @@
                                     <!-- 911 Preview -->
                                     <div class="car-preview-pane" data-car="911">
                                         <div class="preview-media-container">
+                                        
                                             <img src="{{asset('frontend/asset/images/submenu-2.png')}}" alt="911" class="preview-car-img">
                                         </div>
                                         <div class="preview-specs-container">
@@ -309,6 +311,7 @@
                                     <!-- Panamera Preview -->
                                     <div class="car-preview-pane" data-car="panamera">
                                         <div class="preview-media-container">
+                                           
                                             <img src="{{asset('frontend/asset/images/submenu-4.png')}}" alt="Panamera" class="preview-car-img">
                                         </div>
                                         <div class="preview-specs-container">
@@ -337,6 +340,7 @@
                                     <!-- Macan Preview -->
                                     <div class="car-preview-pane" data-car="macan">
                                         <div class="preview-media-container">
+                                            
                                             <img src="{{asset('frontend/asset/images/submenu-5.png')}}" alt="Macan" class="preview-car-img">
                                         </div>
                                         <div class="preview-specs-container">
@@ -365,6 +369,7 @@
                                     <!-- Cayenne Preview -->
                                     <div class="car-preview-pane" data-car="cayenne">
                                         <div class="preview-media-container">
+                                        
                                             <img src="{{asset('frontend/asset/images/submenu-6.png')}}" alt="Cayenne" class="preview-car-img">
                                         </div>
                                         <div class="preview-specs-container">
